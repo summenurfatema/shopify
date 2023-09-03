@@ -533,14 +533,4 @@ export default UploadProduct;
 //                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
 //                 />
 //               </div>
-//               {/* in stock */}
-//               <div className="col-span-full sm:col-span-2">
-//                 <label for="stock">Stock Status</label>
-
-//                 <select
-
-//                   id="stock"
-//                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-//                 >
-//                   <option value="true">Stock In</option>
 
