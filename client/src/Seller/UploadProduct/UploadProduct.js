@@ -499,12 +499,3 @@ export default UploadProduct;
 //                   name="subcategory"
 //                   id="subcategory"
 //                   className="w-full rounded-md border h-12  focus:ring dark:border-gray-700 dark:text-gray-900"
-//                 >
-//                   {subcategories[selectedCategory].map((subcategory) => (
-//                     <option key={subcategory} value={subcategory}>
-//                       {subcategory}
-//                     </option>
-//                   ))}
-//                 </select>
-//               </div>
-
