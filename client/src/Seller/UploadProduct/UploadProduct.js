@@ -551,10 +551,4 @@ export default UploadProduct;
 //                 <label for="weight" className="text-sm">
 //                   Package Weight
 //                 </label>
-//                 <input
-//                   id="weight"
-//                   type="text"
-//                   placeholder=""
-//                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-//                 />
 //               </div>
