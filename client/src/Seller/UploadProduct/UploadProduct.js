@@ -466,11 +466,3 @@ export default UploadProduct;
 //               <div className="col-span-full sm:col-span-2">
 //                 <label for="cars">Size</label>
 
-//                 <select
-
-//                   id="cars"
-//                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-//                 >
-//                   <option value="volvo">S</option>
-//                   <option value="saab">M</option>
-//                   <option value="mercedes">L</option>
