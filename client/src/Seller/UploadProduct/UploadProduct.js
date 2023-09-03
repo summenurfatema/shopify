@@ -520,12 +520,3 @@ export default UploadProduct;
 //                   <option value="false">No</option>
 //                 </select>
 //               </div>
-//               {/* price */}
-//               <div className="col-span-full sm:col-span-2">
-//                 <label for="price" className="text-sm">
-//                   Price
-//                 </label>
-//                 <input
-//                   id="price"
-//                   type="text"
-//                   placeholder=""
