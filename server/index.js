@@ -37,6 +37,33 @@ async function run() {
         const result = await productCollection.findOne(query)
         res.send(result)
     })  
+    //
+    app.post('/upload-product',async (req,res)=>{
+        const data = req.body;
+      const result = await productCollection.insertOne(data);
+      res.send(result);
+
+    })
+    //
+    app.put('/update-product/:id',async(req,res)=>{
+        const id = req.params.id
+      
+        const data = req.body;
+      const filter = { _id: new ObjectId(id) };
+      const option = { upsert: true };
+      const updateDoc = {
+        $set: {
+          data: data.data,
+        },
+      };
+
+      const result = await productCollection.findOneAndUpdate(
+        filter,
+        updateDoc,
+        option
+      );
+      res.send(result);
+    })
     }
     finally {
        

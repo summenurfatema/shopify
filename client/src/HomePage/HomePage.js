@@ -1,10 +1,11 @@
 import React from 'react';
 import AllProduct from '../pages/ProductSection/AllProduct/AllProduct';
+import HeroSlider from '../pages/HeroSlider/HeroSlider';
 
 const HomePage = () => {
     return (
         <div>
-            <h2 className='text-5xl font-bold text-gray-800'>This is Homepage</h2>
+            <HeroSlider/>
             <AllProduct/>
         </div>
     );

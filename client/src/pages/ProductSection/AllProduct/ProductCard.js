@@ -4,10 +4,12 @@ import { TiTick } from "react-icons/ti";
 import { useLoaderData } from "react-router-dom";
 
 const ProductCard = () => {
-  const data = useLoaderData();
-  console.log(data);
+  const product = useLoaderData();
+  console.log(product);
   const {
     productName,
+    imageLink,
+    productTitle,
     offerPrice,
     previousPrice,
     productDescription,
@@ -19,12 +21,12 @@ const ProductCard = () => {
     isStock,
     category,
     sku,
-  } = data;
+  } = product.data;
   // Define a style object for the color div
   const colorDivStyle = {
     width: "35px",
     height: "35px",
-    backgroundColor: "#000", // Set the background color dynamically
+    backgroundColor: color, // Set the background color dynamically
     display: "inline-block",
     verticalAlign: "middle",
     border:"1px solid gray",
@@ -40,23 +42,23 @@ const ProductCard = () => {
     setQuantity(quantity - 1);
   };
   //newprice
-  const newPrice = (data.productPrice * quantity).toFixed(2);
+  const newPrice = (product.data.productPrice * quantity).toFixed(2);
   return (
     <div className="font-sans flex justify-between items-start px-0 md:px-10 2xl:px-14 3xl:px-20 py-10">
       {/* left */}
       <div className="w-1/2 ">
         <img
           alt="Home"
-          src={data.productImage}
+          src={imageLink}
           class=" w-11/12 rounded-md object-cover"
         />
       </div>
       {/* right */}
       <div class=" space-y-5 w-1/2 ">
         <div class="space-y-2">
-          <p class="text-xl">{category}</p>
+          <p class="text-xl capitalize">For {category}</p>
 
-          <h1 class="text-3xl text-gray-800 font-semibold">{productName}</h1>
+          <h1 class="text-3xl text-gray-800 font-semibold">{productTitle}</h1>
 
           <div className="flex space-x-3 items-center">
             <>
@@ -79,11 +81,9 @@ const ProductCard = () => {
             </div>
           </div>
           <p className="text-xl pt-1">{productDescription}</p>
-          <h1 class="text-2xl text-gray-500 font-medium">
-            ${offerPrice} <del className="text-sm">${previousPrice}</del>{" "}
-          </h1>
+         
         </div>
-
+        <p className="text-xl pt-1">${newPrice}</p>
         <div className="flex space-x-3 items-center">
           <button
             className="text-2xl font-bold px-4 py-1 bg-gray-100 border rounded-md"
@@ -99,7 +99,7 @@ const ProductCard = () => {
             +
           </button>
         </div>
-        <p className="text-xl pt-1">${newPrice}</p>
+      
         <div className="flex items-center space-x-5">
         <span className="text-xl">Color: </span>
         <div style={colorDivStyle}></div>
@@ -111,15 +111,15 @@ const ProductCard = () => {
         </button>
 
         <div className="px-5 space-y-1 border-t pt-3">
-          <div className="flex items-center justify-start w-5/12">
+          <div className="flex items-center justify-start w-8/12">
             <TiTick className="text-xl mr-2" />
             <p class="text-lg">SKU: {sku}</p>
           </div>
-          <div className="flex items-center justify-start w-5/12">
+          <div className="flex items-center justify-start w-8/12">
             <TiTick className="text-xl mr-2" />
             <p class="text-lg">Category: {category}</p>
           </div>
-          <div className="flex items-center justify-start w-5/12">
+          <div className="flex items-center justify-start w-8/12">
             <TiTick className="text-xl mr-2" />
             <p class="text-lg">30 days easy return</p>
           </div>

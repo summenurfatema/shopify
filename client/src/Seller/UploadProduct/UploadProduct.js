@@ -4,23 +4,32 @@ const UploadProduct = () => {
   const { handleSubmit, control } = useForm();
 
   // Function to handle form submission
-  const onSubmit = (data) => {
-    console.log(data); // 'data' contains all the form values as an object
+  const onSubmit = async (data) => {
+    try {
+      console.log(data);
+      // 'data' contains all the form values as an object
+      const response = await fetch(
+        `http://localhost:5000/upload-product`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({data}),
+        }
+      );
+
+      if (response.ok) {
+        alert("A product added successfully");
+      } else {
+        console.error("Error:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
-  const [selectedCategory, setSelectedCategory] = useState("men");
-
-  // Define subcategories for each category
-  const subcategories = {
-    men: ["shirt", "tshirt", "watch", "shoe"],
-    women: ["bag", "shoe", "dress", "ornaments"],
-    kids: ["dress", "kid shoe"],
-  };
-
-  // Function to handle category change
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-  };
+  
   return (
     <div>
       <section className="p-6 bg-gray-100 text-gray-800">
@@ -36,7 +45,7 @@ const UploadProduct = () => {
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-4 mx-60 p-8 border bg-white rounded-md">
               {/* product title */}
               <div className="col-span-full">
-                <label htmlFor="productTitle" className="text-sm">
+                <label htmlFor="productTitle" className="text-lg font-medium">
                   Product Title
                 </label>
                 <Controller
@@ -55,7 +64,7 @@ const UploadProduct = () => {
               </div>
               {/* Product Description */}
               <div className="col-span-full">
-                <label htmlFor="productDescription" className="text-sm">
+                <label htmlFor="productDescription" className="text-lg font-medium">
                   Product Description
                 </label>
                 <Controller
@@ -63,18 +72,18 @@ const UploadProduct = () => {
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
-                    <input
+                    <textarea
                       {...field}
                       id="productDescription"
                       type="text"
-                      className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
-                    />
+                      className="w-full rounded-md border h-16 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
+                    ></textarea>
                   )}
                 />
               </div>
               {/* Image Link */}
               <div className="col-span-full">
-                <label htmlFor="image" className="text-sm">
+                <label htmlFor="imageLink" className="text-lg font-medium">
                   Image Link
                 </label>
                 <Controller
@@ -84,7 +93,7 @@ const UploadProduct = () => {
                   render={({ field }) => (
                     <input
                       {...field}
-                      id="image"
+                      id="imageLink"
                       type="text"
                       className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
                     />
@@ -93,11 +102,11 @@ const UploadProduct = () => {
               </div>
               {/* Seller SKU */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="sku" className="text-sm">
+                <label htmlFor="sku" className="text-lg font-medium">
                   Seller SKU
                 </label>
                 <Controller
-                  name="sellerSKU"
+                  name="sku"
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
@@ -128,6 +137,7 @@ const UploadProduct = () => {
                       <option value="#0000FF">Blue</option>
                       <option value="#fff">White</option>
                       <option value="#000">Black</option>
+                      <option value="#964B00">Brown</option>
                     </select>
                   )}
                 />
@@ -159,13 +169,12 @@ const UploadProduct = () => {
                 <Controller
                   name="category"
                   control={control}
-                // Set default value here if needed
+                  defaultValue="men"// Set default value here if needed
+                 
                   render={({ field }) => (
                     <select
                       {...field}
                       id="category"
-                      defaultValue="men"
-                      onChange={handleCategoryChange}
                       className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
                     >
                       <option value="men">Men</option>
@@ -177,37 +186,38 @@ const UploadProduct = () => {
               </div>
               {/* Subcategory */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="subcategory">Subcategory</label>
+                <label htmlFor="subCategory">Subcategory</label>
                 <Controller
-                  name="subcategory"
+                  name="subCategory"
                   control={control}
-                  defaultValue=""
+                  defaultValue="cloth"
                   render={({ field }) => (
                     <select
                       {...field}
-                      id="subcategory"
+                      id="subCategory"
                       className="w-full rounded-md capitalize border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
                     >
-                      {subcategories[selectedCategory].map((subcategory) => (
-                        <option key={subcategory} value={subcategory}>
-                          {subcategory}
-                        </option>
-                      ))}
+                       <option value="cloth">Cloth</option>
+                      <option value="shoe">Shoe</option>
+                      <option value="ornaments">Ornaments</option>
+                      <option value="bag">Bag</option>
+                      <option value="watch">Watch</option>
+                      
                     </select>
                   )}
                 />
               </div>
               {/* Availability */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="availability">Available</label>
+                <label htmlFor="available">Available</label>
                 <Controller
-                  name="availability"
+                  name="available"
                   control={control}
                   defaultValue="true"
                   render={({ field }) => (
                     <select
                       {...field}
-                      id="availability"
+                      id="available"
                       className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
                     >
                       <option value="true">Yes</option>
@@ -218,17 +228,17 @@ const UploadProduct = () => {
               </div>
               {/* price */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="price" className="text-sm">
+                <label htmlFor="productPrice" className="text-lg font-medium">
                   Price
                 </label>
                 <Controller
-                  name="price"
+                  name="productPrice"
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
                     <input
                       {...field}
-                      id="price"
+                      id="productPrice"
                       type="text"
                       placeholder=""
                       className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
@@ -238,7 +248,7 @@ const UploadProduct = () => {
               </div>
               {/* Quantity */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="quantity" className="text-sm">
+                <label htmlFor="quantity" className="text-lg font-medium">
                   Quantity
                 </label>
                 <Controller
@@ -258,15 +268,15 @@ const UploadProduct = () => {
               </div>
               {/* Stock Status */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="stock">Stock Status</label>
+                <label htmlFor="isStock">Stock Status</label>
                 <Controller
-                  name="stockStatus"
+                  name="isStock"
                   control={control}
                   defaultValue="true"
                   render={({ field }) => (
                     <select
                       {...field}
-                      id="stock"
+                      id="isStock"
                       className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
                     >
                       <option value="true">Stock In</option>
@@ -277,7 +287,7 @@ const UploadProduct = () => {
               </div>
               {/* package weight */}
               <div className="col-span-full">
-                <label htmlFor="weight" className="text-sm">
+                <label htmlFor="packageWeight" className="text-lg font-medium">
                   Package Weight
                 </label>
                 <Controller
@@ -287,7 +297,7 @@ const UploadProduct = () => {
                   render={({ field }) => (
                     <input
                       {...field}
-                      id="weight"
+                      id="packageWeight"
                       type="text"
                       placeholder=""
                       className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
@@ -297,7 +307,7 @@ const UploadProduct = () => {
               </div>
               {/* Dimension */}
               <div className="col-span-full">
-                <label htmlFor="dimension" className="text-sm">
+                <label htmlFor="dimension" className="text-lg font-medium">
                   Dimension
                 </label>
                 <Controller
@@ -315,12 +325,13 @@ const UploadProduct = () => {
                   )}
                 />
               </div>
+              <button type="submit"  class="inline-flex items-center justify-center h-12 px-6 font-medium text-lg tracking-wide text-white  rounded shadow-md bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none">
+            Upload
+          </button>
             </div>
            
           </fieldset>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+   
         
         </form>
         
@@ -389,7 +400,7 @@ export default UploadProduct;
 //             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
 //               {/* product title */}
 //               <div className="col-span-full">
-//                 <label for="title" className="text-sm">
+//                 <label for="title" className="text-lg font-medium">
 //                   Product Title
 //                 </label>
 //                 <input

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AdminLayout = () => {
+const SellerLayout = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const AdminLayout = () => {
     );
 };
 
-export default AdminLayout;
+export default SellerLayout;
