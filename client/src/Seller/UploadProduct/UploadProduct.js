@@ -491,11 +491,3 @@ export default UploadProduct;
 //                   <option value="women">Women</option>
 //                   <option value="kids">Kids</option>
 //                 </select>
-//               </div>
-//               {/* subcategory */}
-//               <div className="col-span-full sm:col-span-2">
-//                 <label htmlFor="subcategory">Subcategory</label>
-//                 <select
-//                   name="subcategory"
-//                   id="subcategory"
-//                   className="w-full rounded-md border h-12  focus:ring dark:border-gray-700 dark:text-gray-900"
