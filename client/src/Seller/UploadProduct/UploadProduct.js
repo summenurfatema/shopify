@@ -558,11 +558,3 @@ export default UploadProduct;
 //                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
 //                 />
 //               </div>
-//               {/* Dimention */}
-//               <div className="col-span-full">
-//                 <label for="dimention" className="text-sm">
-//                   Dimention
-//                 </label>
-//                 <input
-//                   id="dimention"
-//                   type="text"
