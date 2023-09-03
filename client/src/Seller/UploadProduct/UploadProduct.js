@@ -543,12 +543,4 @@ export default UploadProduct;
 //                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
 //                 >
 //                   <option value="true">Stock In</option>
-//                   <option value="false">Stock out</option>
-//                 </select>
-//               </div>
-//               {/* package weight */}
-//               <div className="col-span-full">
-//                 <label for="weight" className="text-sm">
-//                   Package Weight
-//                 </label>
-//               </div>
+
