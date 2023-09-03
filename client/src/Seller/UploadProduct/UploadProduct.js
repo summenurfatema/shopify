@@ -474,10 +474,3 @@ export default UploadProduct;
 //                   <option value="volvo">S</option>
 //                   <option value="saab">M</option>
 //                   <option value="mercedes">L</option>
-//                   <option value="audi">XL</option>
-//                 </select>
-//               </div>
-//               {/* category */}
-//               <div className="col-span-full sm:col-span-2">
-//                 <label htmlFor="category">Category</label>
-//                 <select
