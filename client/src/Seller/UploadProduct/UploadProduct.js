@@ -572,10 +572,3 @@ export default UploadProduct;
 //               </div>
 //             </div>
 //           </fieldset>
-//         </form>
-//       </section>
-//     </div>
-//   );
-// };
-
-// export default UploadProduct;
