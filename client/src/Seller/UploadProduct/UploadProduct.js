@@ -529,12 +529,3 @@ export default UploadProduct;
 //                   id="price"
 //                   type="text"
 //                   placeholder=""
-//                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-//                 />
-//               </div>
-//               {/* quantity */}
-//               <div className="col-span-full sm:col-span-2">
-//                 <label for="quantity" className="text-sm">
-//                   Quantity
-
-
