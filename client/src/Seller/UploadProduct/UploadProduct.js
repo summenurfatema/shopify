@@ -481,13 +481,3 @@ export default UploadProduct;
 //               <div className="col-span-full sm:col-span-2">
 //                 <label htmlFor="category">Category</label>
 //                 <select
-//                   name="category"
-//                   id="category"
-//                   className="w-full rounded-md border h-12  focus:ring dark:border-gray-700 dark:text-gray-900"
-//                   onChange={handleCategoryChange}
-//                   value={selectedCategory}
-//                 >
-//                   <option value="men">Men</option>
-//                   <option value="women">Women</option>
-//                   <option value="kids">Kids</option>
-//                 </select>
