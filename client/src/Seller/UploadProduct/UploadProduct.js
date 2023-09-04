@@ -367,17 +367,6 @@ export default UploadProduct;
 //       [name]: value,
 //     });
 
-
-
-//   // Function to handle category change
-//   const handleCategoryChange = (event) => {
-//     setSelectedCategory(event.target.value);
-//   };
-//   return (
-//     <div>
-//       <section className="p-6 bg-white text-gray-800">
-//         <form
-//           novalidate=""
 //           action=""
 //           className="container flex flex-col mx-auto space-y-12"
 //           onSubmit={handleSubmit}
