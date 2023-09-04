@@ -434,14 +434,7 @@ export default UploadProduct;
 //                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
 //                 />
 //               </div>
-//               {/* Seller SKU*/}
-//               <div className="col-span-full sm:col-span-2">
-//                 <label for="sku" className="text-sm">
-//                   Seller SKU
-//                 </label>
-//                 <input
-//                   id="sku"
-//                   type="text"
+
 
 //                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
 //                 />
