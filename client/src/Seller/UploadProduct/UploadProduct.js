@@ -368,14 +368,6 @@ export default UploadProduct;
 //     });
 
 
-//   const [selectedCategory, setSelectedCategory] = useState("men");
-
-//   // Define subcategories for each category
-//   const subcategories = {
-//     men: ["shirt", "tshirt", "watch", "shoe"],
-//     women: ["bag", "shoe", "dress", "ornaments"],
-//     kids: ["dress", "kid shoe"],
-//   };
 
 //   // Function to handle category change
 //   const handleCategoryChange = (event) => {
