@@ -24,6 +24,7 @@ async function run() {
     try {
         console.log('START');
         const productCollection = client.db('shopify').collection('productCollection')
+        const userCollection = client.db('shopify').collection('userCollection')
         app.get('/get-data', async(req,res)=>{
             let query ={}
             const result = await productCollection.find(query).toArray()
@@ -64,6 +65,34 @@ async function run() {
       );
       res.send(result);
     })
+    //
+    app.get('/get-user/:email',async(req,res)=>{
+      const email = req.params.email
+      const query ={email:email}
+      const result = await userCollection.findOne(query)
+      res.send(result)
+
+    })
+    //
+    app.post('/post-users', async (req, res) => {
+      try {
+        const { formData } = req.body;
+        const email = formData.email;
+
+        const existingUser = await userCollection.findOne({ email });
+    
+        if (existingUser) {
+          return res.status(400).json({ error: 'Email already exists. Please signin !!' });
+        } else {
+          const result = await userCollection.insertOne(formData);
+          res.status(201).json({ message: 'User created successfully', user: result.ops[0] });
+        }
+      } catch (error) {
+        console.error('Error creating user:', error);
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    });
+ 
     }
     finally {
        

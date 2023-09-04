@@ -1,8 +1,37 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/UserContext/UserContext";
+import {FaUserCircle} from 'react-icons/fa'
+import { useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const {user, logOut,userRole} = useContext(AuthContext)
+    console.log(user);
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+      logOut().then(() => {
+        navigate("/login");
+      });
+    };
+    
+    // useEffect(() => {
+    //   if (user && user._id) {
+    //     // Fetch the user's role from the server if user is logged in
+    //     fetch(`http://localhost:5000/get-user/${user._id}`)
+    //       .then((res) => res.json())
+    //       .then((data) => {
+    //         console.log(data);
+    //         // setUserRole(data.role);  Set the user's role in state
+    //       });
+    //   } else {
+    //     // If user is not logged in, assume the role is "Buyer"
+    //     // setUserRole("Buyer");
+    //   }
+    // }, [user]);
   
+    // console.log(userRole);
+    
     return (
       <div class="bg-white font-sans">
         <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -22,6 +51,8 @@ export const NavBar = () => {
             
             </div>
             <ul class="flex items-center hidden space-x-8 lg:flex">
+            {userRole === "Buyer" &&
+            <>
             <li>
                   <a
                     href="/"
@@ -33,25 +64,42 @@ export const NavBar = () => {
                   </a>
                 </li>
                 
-                <li>
-                  <a
-                    href="/"
-                    aria-label="About us"
-                    title="About us"
-                    class="font-medium text-lg tracking-wide text-gray-800 transition-colors duration-200 hover:text-teal-accent-400"
-                  >
-                  My Cart
-                  </a>
-                </li>
-              <li>
+               
+              
+                 <li>
                 <a
-                  href="/"
-                  class="inline-flex items-center justify-center h-12 px-6 font-medium text-lg tracking-wide text-white  rounded shadow-md bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none"
-                  aria-label="Sign up"
-                  title="Sign up"
-                >
-                  Sign in
-                </a>
+                href="/my-cart"
+                aria-label="About us"
+                title="About us"
+                class="font-medium text-lg tracking-wide text-gray-800 transition-colors duration-200 hover:text-teal-accent-400"
+              >
+              My Cart
+              </a>
+</li>
+</>
+
+              }
+             
+              <li>
+              {
+                          user?
+                          <button onClick={()=>logOut()}  class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-600 focus:shadow-outline focus:outline-none">
+                            Logout
+                          </button>
+                          :
+                          <a
+                          href="/login"
+                          class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-600 focus:shadow-outline focus:outline-none"
+                          aria-label="Sign up"
+                          title="Sign up"
+                        >
+                          Sign in
+                        </a>
+
+                         }
+              </li>
+              <li>
+                <FaUserCircle className="text-2xl"  title={user?.displayName} />
               </li>
             </ul>
             <div class="lg:hidden">
@@ -59,7 +107,7 @@ export const NavBar = () => {
                 aria-label="Open Menu"
                 title="Open Menu"
                 class="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
-                onClick={() => setIsMenuOpen(true)}
+                onClick={handleLogOut}
               >
                 <svg class="w-5 text-gray-600" viewBox="0 0 24 24">
                   <path
