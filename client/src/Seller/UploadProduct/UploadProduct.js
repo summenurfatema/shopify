@@ -363,13 +363,7 @@ export default UploadProduct;
 //   const handleInputChange = (event) => {
 //     const { name, value } = event.target;
 //     setFormData({
-//       ...formData,
-//       [name]: value,
-//     });
 
-//           action=""
-//           className="container flex flex-col mx-auto space-y-12"
-//           onSubmit={handleSubmit}
 //         >
 //           <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-white">
 //             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
