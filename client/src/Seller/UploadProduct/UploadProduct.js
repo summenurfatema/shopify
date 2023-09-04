@@ -367,14 +367,6 @@ export default UploadProduct;
 //         >
 //           <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-white">
 //             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-//               {/* product title */}
-//               <div className="col-span-full">
-//                 <label for="title" className="text-lg font-medium">
-//                   Product Title
-//                 </label>
-//                 <input
-//                   id="title"
-//                   type="text"
 
 //                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
 //                 />
