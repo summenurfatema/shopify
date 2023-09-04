@@ -366,17 +366,7 @@ export default UploadProduct;
 
 //         >
 //           <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-white">
-//             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
 
-//                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
-//                 />
-//               </div>
-//               {/* product Description*/}
-//               <div className="col-span-full">
-//                 <label for="description" className="text-sm">
-//                   Product Description
-//                 </label>
-//                 <input
 //                   id="description"
 //                   type="text"
 
