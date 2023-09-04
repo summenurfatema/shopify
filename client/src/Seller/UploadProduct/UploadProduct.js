@@ -366,13 +366,7 @@ export default UploadProduct;
 //       ...formData,
 //       [name]: value,
 //     });
-//   };
 
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     // Now 'formData' contains all the form values as an object.
-//     console.log(formData);
-//   };
 
 //   const [selectedCategory, setSelectedCategory] = useState("men");
 
