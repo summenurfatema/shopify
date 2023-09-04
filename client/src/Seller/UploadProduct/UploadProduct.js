@@ -433,15 +433,6 @@ export default UploadProduct;
 
 //                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
 
-
-//                   id="color"
-//                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-//                 >
-//                   <option value="#f00">Red</option>
-//                   <option value="#008000">Green</option>
-//                   <option value="#0000FF">Blue</option>
-//                   <option value="#fff">white</option>
-//                   <option value="#000">Black</option>
 //                 </select>
 //               </div>
 //               {/* size */}
