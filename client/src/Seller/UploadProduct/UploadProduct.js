@@ -364,16 +364,6 @@ export default UploadProduct;
 //     const { name, value } = event.target;
 //     setFormData({
 
-//         >
-//           <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-white">
-
-//                   id="description"
-//                   type="text"
-//                   Image Link
-//                 </label>
-//                 <input
-//                   id="image"
-//                   type="text"
 
 //                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
 
