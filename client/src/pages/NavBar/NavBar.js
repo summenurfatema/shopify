@@ -22,15 +22,7 @@ export const NavBar = () => {
   //       .then((res) => res.json())
   //       .then((data) => {
   //         console.log(data);
-  //         // setUserRole(data.role);  Set the user's role in state
-  //       });
-  //   } else {
-  //     // If user is not logged in, assume the role is "Buyer"
-  //     // setUserRole("Buyer");
-  //   }
-  // }, [user]);
 
-  // console.log(userRole);
 
   return (
     <div class="bg-white font-sans">
