@@ -99,12 +99,6 @@ useEffect(() => {
     (item) => item._id === action.payload._id
   );
 
-  if (existingItemIndex !== -1) {
-    // If the item already exists, update its quantity
-    updatedCartItems[existingItemIndex].quantity += 1;
-  } else {
-    // If the item is not in the cart, add it with quantity 1
-    updatedCartItems.push({ ...action.payload, quantity: 1 });
  
 
 
