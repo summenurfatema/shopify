@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+import { ImUpload } from "react-icons/im";
 const UploadProduct = () => {
   const { handleSubmit, control } = useForm();
 
@@ -32,8 +33,11 @@ const UploadProduct = () => {
   
   return (
     <div>
-      <section className="p-6 bg-gray-100 text-gray-800">
-     
+      <section className="p-6 border rounded-md text-gray-800">
+        <div className="flex justify-center border-b pb-2 mx-10">
+        <ImUpload className='text-xl' />
+     <h1 className="text-xl text-gray-800 font-semibold pl-3">Upload a product</h1>
+     </div>
         <form
           novalidate=""
           action=""
@@ -42,7 +46,7 @@ const UploadProduct = () => {
         >
           <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm w-full">
          
-            <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-4 mx-60 p-8 border bg-white rounded-md">
+            <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-4 mx-5 p-8 border bg-white rounded-md">
               {/* product title */}
               <div className="col-span-full">
                 <label htmlFor="productTitle" className="text-lg font-medium">

@@ -8,7 +8,8 @@ const Login = () => {
     const { signIn,google,userRole} = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
-    const from = location.state?.from?.pathname || '/'
+    const from = location.state?.from?.pathname || '/';
+  
 
     const [newFormData, setNewFormData] = useState({
         email: '',
@@ -23,20 +24,18 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+      
         console.log(newFormData);
         signIn(newFormData.email, newFormData.password)
-        .then(result => {
-            const user = result.user
-            console.log(user)
-            toast.success('Login successfull')
-            navigate(from, { replace: true })
-            
-          
-        })
-        .catch(error => console.error(error))
-
-    };
+          .then(result => {
+            const user = result.user;
+            console.log(user);
+            toast.success('Login successful');
+              navigate(from, { replace: true });
+        
+          })
+          .catch(error => console.error(error));
+      };
 
     const googleProvider = new GoogleAuthProvider()
 

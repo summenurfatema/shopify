@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { TiTick } from "react-icons/ti";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom"
+import { AuthContext } from "../../../context/UserContext/UserContext";
 
 const ProductCard = () => {
   const product = useLoaderData();
   console.log(product);
+  const {user,cartDispatch } = useContext(AuthContext)
   const {
     productName,
     imageLink,
@@ -22,6 +24,8 @@ const ProductCard = () => {
     category,
     sku,
   } = product.data;
+  const cartItem =product.data
+
   // Define a style object for the color div
   const colorDivStyle = {
     width: "35px",
@@ -43,6 +47,119 @@ const ProductCard = () => {
   };
   //newprice
   const newPrice = (product.data.productPrice * quantity).toFixed(2);
+  //
+
+   //razorpay button 1
+   useEffect(() => {
+    const loadPaymentButtonScript = () => {
+      const form = document.getElementById("form");
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.async = true;
+      script.dataset.payment_button_id = "pl_MXRJDPUPoDIfxQ";
+
+      if (form) {
+        form.appendChild(script);
+      }
+      
+  
+    };
+    loadPaymentButtonScript();
+
+    return () => {
+      const script = document.querySelector(
+        'script[src="https://checkout.razorpay.com/v1/payment-button.js"]'
+      );
+      if (script && script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    };
+  }, []);
+
+
+
+const handleMyOrder = () => {
+
+  const data = {
+    productName: productTitle,
+    quantity: quantity,
+    paidAmount: newPrice,
+    email:user?.email,
+    sellerSku :sku
+  };
+  console.log(data)
+  const apiUrl = "http://localhost:5000/post-to-my-order"; // Replace with your actual backend API URL
+
+  // Make a POST request to your backend
+  fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((responseData) => {
+      console.log("Data sent to backend successfully:", responseData);
+
+      // Assuming you want to redirect the user to a thank-you page after successful payment
+      // You can add the logic for redirection here
+
+      // For example, you can use React Router to redirect:
+      // history.push("/thank-you");
+    })
+    .catch((error) => {
+      console.error("Error sending data to backend:", error);
+    });
+
+
+  }
+const handleAddToCart = () => {
+
+  const data = {
+    productTitle:productTitle,
+    productImage:imageLink,
+    quantity:quantity,
+    price: newPrice,
+    email:user?.email,
+    sellerSku :sku
+  };
+  console.log(data)
+  const apiUrl = "http://localhost:5000/post-to-cart"; // Replace with your actual backend API URL
+
+  // Make a POST request to your backend
+  fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({data}),
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((responseData) => {
+    console.log("Data sent to backend successfully:", responseData);
+  })
+  .catch((error) => {
+    console.error("Error sending data to backend:", error);
+    alert("Product already in cart");
+  })
+
+
+  }
+//redux
+const addToCart = (cartItem) => {
+  cartDispatch({ type: "ADD_TO_CART", payload: cartItem });
+};
   return (
     <div className="font-sans flex justify-between items-start px-0 md:px-10 2xl:px-14 3xl:px-20 py-10">
       {/* left */}
@@ -106,9 +223,10 @@ const ProductCard = () => {
         </div>
        
           
-        <button className="w-40 rounded-md mt-2 text-xl text-white py-3 bg-indigo-700 hover:bg-indigo-500">
+        <button onClick={handleAddToCart} className="w-40 rounded-md mt-2 text-xl text-white py-3 bg-indigo-700 hover:bg-indigo-500">
           Add to cart
         </button>
+        <form onClick={handleMyOrder} id="form"></form>
 
         <div className="px-5 space-y-1 border-t pt-3">
           <div className="flex items-center justify-start w-8/12">

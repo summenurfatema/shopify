@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/UserContext/UserContext";
+import { TbTrashOff } from "react-icons/tb";
 
 const Cart = () => {
-  const [carts, setCats] = useState([]);
+  const {user} = useContext(AuthContext)
+  const [carts, setCarts] = useState([]);
+  console.log(carts.length);
   useEffect(() => {
-    fetch("cart.json")
+    fetch(`http://localhost:5000/get-cart-item/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        setCats(data);
+        setCarts(data);
       });
   }, []);
-  //
-   // Initialize quantities after cart data is fetched
-   const [quantities, setQuantities] = useState([]);
+  // //
+  //  // Initialize quantities after cart data is fetched
+    const [quantities, setQuantities] = useState([]);
    useEffect(() => {
     setQuantities(carts.map(() => 1));
   }, [carts]);
@@ -41,7 +45,7 @@ const shippingOptions = [
 ];
 
 const newCartItemPrices = carts.map((cart, index) =>
-cart.productPrice * quantities[index]
+cart.price * quantities[index]
 );
 
   // Calculate subtotal
@@ -53,10 +57,174 @@ cart.productPrice * quantities[index]
   )?.price;
 
   const total = subtotal + selectedShippingPrice;
+  //
+  useEffect(() => {
+    const loadPaymentButtonScript = () => {
+      const form = document.getElementById("form");
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.async = true;
+      script.dataset.payment_button_id = "pl_MXRJDPUPoDIfxQ";
+
+      if (form) {
+        form.appendChild(script);
+      }
+      
+  
+    };
+    loadPaymentButtonScript();
+
+    return () => {
+      const script = document.querySelector(
+        'script[src="https://checkout.razorpay.com/v1/payment-button.js"]'
+      );
+      if (script && script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    };
+  }, []);
+  //
+ 
+  // const handleAddItems = async () => {
+  //   const newItems = carts.map((cart) => ({
+  //     productTitle: cart.productTitle,
+  //     productImage: cart.imageLink,
+  //     quantity: parseInt(cart.quantity),
+  //     sku: cart.sku,
+  //   }));
+  
+  //   try {
+  //     // Create a single object with an "items" property containing the array of products
+  //     const products = {
+  //       items: newItems,
+  //     };
+  
+  //     const orderData = {
+  //       client: user?.email,
+  //       totalAmount: parseInt(total),
+  //       products: products,
+  //       status:"pending"
+       
+  //     };
+  
+  //     // Log the object before sending the request
+  //     console.log("Adding items:", orderData);
+  
+  //     const response = await fetch("http://localhost:5000/add-items", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(orderData),
+  //     });
+  
+  //     // Check if the response status is OK (200) before considering it successful
+  //     if (response.status === 200) {
+  //       console.log("Items added successfully:", newItems);
+  //     } else {
+  //       console.error("Failed to add items:", newItems);
+  //     }
+  
+  //     // Clear the cart or update it as needed
+  //     setCarts([]);
+  //   } catch (error) {
+  //     console.error("Error adding items to order:", error);
+  //     // Handle error (e.g., display an error message to the user)
+  //   }
+  // };
+  const handleAddItems = async () => {
+    // ... Your existing code for creating orders ...
+  
+    try {
+      // Log the object before sending the request
+      const newItems = carts.map((cart) => ({
+            productTitle: cart.productTitle,
+            productImage: cart.productImage,
+            quantity: parseInt(cart.quantity),
+            sellerSku: cart.sellerSku,
+          }));
+          const products = {
+                  items: newItems,
+                };
+            
+                const orderData = {
+                  email: user?.email,
+                  totalAmount: parseInt(total),
+                  products: products,
+                  status:"pending"
+                 
+                };
+            
+                // Log the object before sending the request
+                console.log("Adding items:", orderData);
+      console.log("Adding items:", orderData);
+  
+      const response = await fetch("http://localhost:5000/add-items", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
+  
+      // Check if the response status is OK (200) before considering it successful
+      if (response.status === 200) {
+        console.log("Items added successfully:", carts);
+  
+        // Remove the items from the cartCollection
+        // Assuming each cart item has an _id property
+        await fetch("http://localhost:5000/remove-items", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: user?.email }),
+        });
+  
+        // Clear the cart or update it as needed
+        setCarts([]);
+      } else {
+        console.error("Failed to add items:", carts);
+      }
+    } catch (error) {
+      console.error("Error adding items to order:", error);
+      // Handle error (e.g., display an error message to the user)
+    }
+  };
+  
+  
+      // Clear the cart or update it as needed
+      const handleDelete = (cart) => {
+        const agree = window.confirm("Are you ready to delete this product?");
+        if (agree) {
+          fetch(
+            `http://localhost:5000/delete-cart-item/${cart._id}`,
+            {
+              method: "DELETE",
+            }
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.deletedCount > 0) {
+                alert(" This product has been deleted successfully !");
+                window.location.reload()
+              }
+            });
+        }
+      };
+      
+  
   return (
-    <div className="px-0 md:px-10 2xl:px-14 3xl:px-20">
-      <h1 className="text-4xl text-black font-semibold py-14">Shoping cart</h1>
-      <div className="flex flex-col lg:flex-row items-start">
+    <div className="px-0 md:px-10 2xl:px-14 3xl:px-20 font-sans bg-white h-screen">
+      <h1 className="text-2xl xl:text-4xl text-center lg:text-start text-black font-semibold py-14">Shoping cart</h1>
+      {
+        carts.length === 0 ?
+        <>
+        <p className="text-sm md:text-lg 2xl:text-2xl text-gray-800 font-medium text-center">Your cart is empty. Do some <span><a href='/' className="text-blue-600 cursor-pointer hover:underline" >Shopping</a></span> !!!</p>
+        <p className="text-sm md:text-lg 2xl:text-2xl text-gray-800 font-medium text-center">order <span><a href={`/my-order/${user?.email}`} className="text-blue-600 cursor-pointer hover:underline" >Here</a></span> !!!</p>
+        </>
+        :
+        <div className="flex flex-col lg:flex-row items-start">
 
       
       <table className=" p-6 text-lg text-left w-full lg:w-9/12 border">
@@ -71,7 +239,7 @@ cart.productPrice * quantities[index]
         </thead>
         <tbody className="border-b ">
         {carts.map((cart, index) => {
-            const newCartItemPrice = cart.productPrice * quantities[index];
+            const newCartItemPrice = cart.price * quantities[index];
             return (
               <tr key={cart.productId} className="">
                 <td>
@@ -99,12 +267,17 @@ cart.productPrice * quantities[index]
                   </div>
                 </td>
                 <td className="text-sm lg:text-xl">${newCartItemPrice.toFixed(2)}</td>
+                <td className='pl-5'>
+                               <div onClick={()=>handleDelete(cart)}  className="flex justify-center items-center h-12 w-12 rounded-full duration-200 hover:bg-red-500">
+                                 <TbTrashOff className="text-3xl text-center text-gray-800 hover:text-white " />
+                               </div>
+                               </td>
               </tr>
             );
           })}
         </tbody>
       </table>
-      <div className="w-full lg:w-3/12 border rounded-md shadow-lg p-4 mx-5 space-y-4">
+      <div className="w-full lg:w-3/12 border rounded-md shadow-lg p-4 mt-10 lg:mt-0 lg:mx-5 space-y-4">
        <div className="flex justify-between items-center border-b pb-2">
        <p className="text-2xl text-black font-semibold">Subtotal:</p>
        <p className="text-2xl text-black font-semibold">${subtotal.toFixed(2)}</p>
@@ -130,9 +303,10 @@ cart.productPrice * quantities[index]
        <p className="text-2xl text-black font-semibold ">Total:</p>
        <p className="text-2xl text-black font-semibold">${total.toFixed(2)}</p>
        </div>
-         
+         <form className="w-full  float-right" id="form" onClick={handleAddItems}></form>
         </div>
       </div>
+      }
     </div>
   );
 };
