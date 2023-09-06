@@ -114,17 +114,6 @@ useEffect(() => {
     cartItems: updatedCartItems,
   };
 
-      case "UPDATE_CART_ITEMS":
-        localStorage.setItem("cartItems", JSON.stringify(action.payload));
-        return {
-          ...state,
-          cartItems: action.payload,
-        };
-      default:
-        return state;
-    }
-  }
-  //
 
 
     const authInfo = { loading, user, createUser, updateUser, signIn, logOut, google,userRole,cartState,
