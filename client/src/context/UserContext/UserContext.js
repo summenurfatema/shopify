@@ -125,13 +125,7 @@ useEffect(() => {
     }
   }
   //
-  // Delete cart item
-  const handleCartDelete = (itemId) => {
-    const updatedCartItems = cartState.cartItems.filter(
-      (item) => item._id !== itemId
-    );
-    cartDispatch({ type: "UPDATE_CART_ITEMS", payload: updatedCartItems });
-  };
+
 
     const authInfo = { loading, user, createUser, updateUser, signIn, logOut, google,userRole,cartState,
       cartDispatch,
