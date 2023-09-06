@@ -90,14 +90,7 @@ useEffect(() => {
       cartItems: storedCartItems ? JSON.parse(storedCartItems) : [],
     };
   }
-  // Cart container
-  function cartReducer(state, action) {
-    switch (action.type) {
-      case "ADD_TO_CART":
-  const updatedCartItems = [...state.cartItems];
-  const existingItemIndex = updatedCartItems.findIndex(
-    (item) => item._id === action.payload._id
-  );
+
 
  
 
