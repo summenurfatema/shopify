@@ -78,20 +78,6 @@ useEffect(() => {
       setUserRole("Buyer");
     }
   }, [user]);
-  //cart
-  // Save cart data to local storage
-  function getInitialCartState() {
-    const storedCartItems = localStorage.getItem("cartItems");
-    return {
-      ...initialState,
-      cartItems: storedCartItems ? JSON.parse(storedCartItems) : [],
-    };
-  }
-
-
- 
-
-
 
     const authInfo = { loading, user, createUser, updateUser, signIn, logOut, google,userRole}
 
