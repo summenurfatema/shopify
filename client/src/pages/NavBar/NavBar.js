@@ -15,14 +15,6 @@ export const NavBar = () => {
     });
   };
 
-  // useEffect(() => {
-  //   if (user && user._id) {
-  //     // Fetch the user's role from the server if user is logged in
-  //     fetch(`http://localhost:5000/get-user/${user._id}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data);
-
 
   return (
     <div class="bg-white font-sans">
