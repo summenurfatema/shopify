@@ -15,10 +15,7 @@ const UserContext = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
     const [userRole, setUserRole] = useState(null);
-    const [cartState, cartDispatch] = useReducer(
-      cartReducer,
-      getInitialCartState()
-    );
+
     // sign up
     const createUser = (email, password) => {
         setLoading(true)
@@ -96,10 +93,7 @@ useEffect(() => {
 
 
 
-    const authInfo = { loading, user, createUser, updateUser, signIn, logOut, google,userRole,cartState,
-      cartDispatch,
-      handleCartDelete,
-       }
+    const authInfo = { loading, user, createUser, updateUser, signIn, logOut, google,userRole}
 
     return (
         <AuthContext.Provider value={authInfo}>
