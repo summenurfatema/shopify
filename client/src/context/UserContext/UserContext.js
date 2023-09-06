@@ -105,14 +105,7 @@ useEffect(() => {
   } else {
     // If the item is not in the cart, add it with quantity 1
     updatedCartItems.push({ ...action.payload, quantity: 1 });
-  }
-
-  localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-
-  return {
-    ...state,
-    cartItems: updatedCartItems,
-  };
+ 
 
 
 
