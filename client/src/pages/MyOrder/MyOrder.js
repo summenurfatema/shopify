@@ -57,7 +57,7 @@ const MyOrder = () => {
                         position: "fixed",
                         top: 0,
                         left: 0,
-                        zIndex: 2147483647,
+                       
                       }}
                     >
                       <div className="modal-box w-11/12 max-w-3xl bg-white">

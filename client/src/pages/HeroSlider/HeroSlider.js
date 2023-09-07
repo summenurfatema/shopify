@@ -42,10 +42,11 @@ const HeroSlider = () => {
       }}
       navigation={true}
       modules={[Autoplay, Pagination, Navigation]}
+
     >
       {services.map((slide) => (
         <SwiperSlide key={slide.id}>
-          <div className="w-full h-[600px] relative">
+          <div className="w-full h-[600px] relative z-10">
             <img
               src={slide.image}
               alt="slider"
