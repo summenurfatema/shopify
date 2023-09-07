@@ -110,17 +110,7 @@ const SignUp = () => {
                                 className="input input-bordered"
                                 value={formData.name}
                                 onChange={handleChange}
-                            />
 
-
-                                required
-                                type="password"
-                                name="password"
-                                placeholder="**********"
-                                className="input input-bordered"
-                                value={formData.password}
-                                onChange={handleChange}
-                            />
                         </div>
                         <div className="form-control">
                             <label className="label">
