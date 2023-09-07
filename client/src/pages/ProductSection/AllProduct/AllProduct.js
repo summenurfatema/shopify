@@ -11,8 +11,7 @@ const AllProduct = () => {
         setProducts(data);
       });
   }, []);
-  const news = products.data
-  console.log(products.data);
+;
   console.log(products);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 px-0 md:px-10 2xl:px-14 3xl:px-20 py-10 gap-5 lg:gap-6 font-sans">
