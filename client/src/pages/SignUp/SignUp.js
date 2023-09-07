@@ -112,11 +112,7 @@ const SignUp = () => {
                                 onChange={handleChange}
                             />
 
-    ame="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input
+
                                 required
                                 type="password"
                                 name="password"
