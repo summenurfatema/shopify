@@ -107,13 +107,7 @@ const SignUp = () => {
                                 type="text"
                                 name="name"
                                 placeholder="Name"
-                                className="input input-bordered"
-                                value={formData.name}
-                                onChange={handleChange}
-                        </div>
-                        <div className="form-control mt-6">
 
-                </div>
             </div>
         </div> */}
       {/* ... */}
