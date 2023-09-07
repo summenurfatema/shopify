@@ -96,17 +96,7 @@ const SignUp = () => {
     <>
       {/* <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form className="card-body" onSubmit={handleSignupByEmail}>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Name</span>
-                            </label>
-                            <input
-                                required
-                                type="text"
-                                name="name"
-                                placeholder="Name"
+
 
             </div>
         </div> */}
