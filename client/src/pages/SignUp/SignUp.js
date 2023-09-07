@@ -94,13 +94,6 @@ const SignUp = () => {
   };
   return (
     <>
-      {/* <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row">
-
-
-            </div>
-        </div> */}
-      {/* ... */}
       <div className="flex justify-center items-center font-sans pt-10  bg-gray-200 h-screen">
         <div className="w-full max-w-md p-4 border rounded-md shadow-md sm:p-8 bg-white text-gray-800">
           <h2 className="mb-3 text-3xl font-semibold text-center">
