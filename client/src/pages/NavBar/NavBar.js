@@ -67,11 +67,18 @@ export const NavBar = () => {
                     </a>
                   )}
                 </li>
+
                 <li>
-                  <FaUserCircle
-                    className="text-2xl"
+                  {
+                    user?
+                    <img title={user?.displayName} className="h-12 w-12 rounded-full" src='https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg?size=626&ext=jpg&ga=GA1.2.1540219272.1675657721&semt=ais' alt={user?.displayName}/>
+                    :
+                    <FaUserCircle
+                    className="text-3xl text-gray-800"
                     title={user?.displayName}
                   />
+                  }
+                  
                 </li>
               </>
             ) : (
