@@ -114,11 +114,7 @@ const SignUp = () => {
 
                                 required
                                 type="text"
-                                name="email"
-                                placeholder="Email"
-                                className="input input-bordered"
-                                value={formData.email}
-                                onChange={handleChange}
+
                             />
                         </div>
                         <div className="form-control">
