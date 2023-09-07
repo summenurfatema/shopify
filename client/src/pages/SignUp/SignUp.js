@@ -110,24 +110,9 @@ const SignUp = () => {
                                 className="input input-bordered"
                                 value={formData.name}
                                 onChange={handleChange}
-
-                        </div>
-                        <div className="form-control">
-
-                            >
-                                <option value="Buyer">Buyer</option>
-                                <option value="Seller">Seller</option>
-                            </select>
                         </div>
                         <div className="form-control mt-6">
-                            <button type="submit" className="btn w-full bg-cyan-600">
-                                Sign Up
-                            </button>
-                        </div>
-                        <p>
-                            Already have an account? <Link to="/login">Login here !!</Link>
-                        </p>
-                    </form>
+
                 </div>
             </div>
         </div> */}
