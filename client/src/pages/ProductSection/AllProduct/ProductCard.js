@@ -1,55 +1,55 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { TiTick } from "react-icons/ti";
-import { useLoaderData } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
 import { AuthContext } from "../../../context/UserContext/UserContext";
+import { toast } from 'react-hot-toast';
 
 const ProductCard = () => {
+  // getting data from loader
   const product = useLoaderData();
-  console.log(product);
-  const {user,cartDispatch } = useContext(AuthContext)
+
+  //quantity state
+  const [quantity, setQuantity] = useState(1);
+
+  //getting data from User context
+  const {user } = useContext(AuthContext)
   const {
-    productName,
     imageLink,
     productTitle,
-    offerPrice,
-    previousPrice,
     productDescription,
     color,
-    productImage,
-    productColor,
-    productSize,
-    productQuantity,
     isStock,
     category,
     sku,
   } = product.data;
-  const cartItem =product.data
+
 
   // Define a style object for the color div
   const colorDivStyle = {
     width: "35px",
     height: "35px",
-    backgroundColor: color, // Set the background color dynamically
+    backgroundColor: color, 
     display: "inline-block",
     verticalAlign: "middle",
     border:"1px solid gray",
     marginRight: "8px", 
     borderRadius:"50%"
-    // Adjust as needed
   };
-  const [quantity, setQuantity] = useState(1);
+
+  //change quantity
   const handleQuantityPlus = () => {
     setQuantity(quantity + 1);
   };
   const handleQuantityMinus = () => {
     setQuantity(quantity - 1);
   };
-  //newprice
-  const newPrice = (product.data.productPrice * quantity).toFixed(2);
-  //
 
-   //razorpay button 1
+  //newprice of product
+  const newPrice = (product.data.productPrice * quantity).toFixed(2);
+  
+
+   //razorpay button 
    useEffect(() => {
     const loadPaymentButtonScript = () => {
       const form = document.getElementById("form");
@@ -61,8 +61,6 @@ const ProductCard = () => {
       if (form) {
         form.appendChild(script);
       }
-      
-  
     };
     loadPaymentButtonScript();
 
@@ -77,9 +75,8 @@ const ProductCard = () => {
   }, []);
 
 
-
+// Add product to my order
 const handleMyOrder = () => {
-
   const data = {
     productName: productTitle,
     quantity: quantity,
@@ -87,8 +84,8 @@ const handleMyOrder = () => {
     email:user?.email,
     sellerSku :sku
   };
-  console.log(data)
-  const apiUrl = "http://localhost:5000/post-to-my-order"; // Replace with your actual backend API URL
+ 
+  const apiUrl = "http://localhost:5000/post-to-my-order";
 
   // Make a POST request to your backend
   fetch(apiUrl, {
@@ -105,13 +102,7 @@ const handleMyOrder = () => {
       return response.json();
     })
     .then((responseData) => {
-      console.log("Data sent to backend successfully:", responseData);
-
-      // Assuming you want to redirect the user to a thank-you page after successful payment
-      // You can add the logic for redirection here
-
-      // For example, you can use React Router to redirect:
-      // history.push("/thank-you");
+      toast.success("Product is added in cart successfully!!!");
     })
     .catch((error) => {
       console.error("Error sending data to backend:", error);
@@ -119,8 +110,8 @@ const handleMyOrder = () => {
 
 
   }
-const handleAddToCart = () => {
-
+  //adding product to cart
+ const handleAddToCart = () => {
   const data = {
     productTitle:productTitle,
     productImage:imageLink,
@@ -129,10 +120,9 @@ const handleAddToCart = () => {
     email:user?.email,
     sellerSku :sku
   };
-  console.log(data)
-  const apiUrl = "http://localhost:5000/post-to-cart"; // Replace with your actual backend API URL
 
-  // Make a POST request to your backend
+  const apiUrl = "http://localhost:5000/post-to-cart"; 
+
   fetch(apiUrl, {
     method: "POST",
     headers: {
@@ -147,21 +137,17 @@ const handleAddToCart = () => {
     return response.json();
   })
   .then((responseData) => {
-    console.log("Data sent to backend successfully:", responseData);
+    toast.success("Product is added in cart successfully!!!");
   })
   .catch((error) => {
     console.error("Error sending data to backend:", error);
-    alert("Product already in cart");
+   toast.error("Product already in cart");
   })
+}
 
 
-  }
-//redux
-const addToCart = (cartItem) => {
-  cartDispatch({ type: "ADD_TO_CART", payload: cartItem });
-};
   return (
-    <div className="font-sans flex justify-between items-start px-0 md:px-10 2xl:px-14 3xl:px-20 py-10">
+    <div className="bg-white text-gray-800 font-sans flex justify-between items-start px-0 md:px-10 2xl:px-14 3xl:px-20 py-10">
       {/* left */}
       <div className="w-1/2 ">
         <img
@@ -200,7 +186,7 @@ const addToCart = (cartItem) => {
           <p className="text-xl pt-1">{productDescription}</p>
          
         </div>
-        <p className="text-xl pt-1">${newPrice}</p>
+        <p className="text-xl pt-1">₹{newPrice}</p>
         <div className="flex space-x-3 items-center">
           <button
             className="text-2xl font-bold px-4 py-1 bg-gray-100 border rounded-md"
@@ -223,19 +209,39 @@ const addToCart = (cartItem) => {
         </div>
        
           
-        <button onClick={handleAddToCart} className="w-40 rounded-md mt-2 text-xl text-white py-3 bg-indigo-700 hover:bg-indigo-500">
+        {user?
+         <div className="flex items-start">
+        <button onClick={handleAddToCart} className="mr-3 w-40 rounded-md  text-xl text-white py-2 bg-indigo-700 hover:bg-indigo-500">
+        Add to cart
+      </button>
+
+      <form onClick={handleMyOrder} id='form'></form>
+
+      </div>
+      :
+      <div className="flex items-center">
+      <Link to='/login'>
+        <button  className="w-40 rounded-md mt-2 text-xl text-white py-2 bg-indigo-700 hover:bg-indigo-500">
           Add to cart
         </button>
-        <form onClick={handleMyOrder} id="form"></form>
+      </Link>
+      <Link to='/login'>
+      <button  className="ml-3 w-40 rounded-md mt-2 text-xl text-white py-2 bg-indigo-700 hover:bg-indigo-500">
+          Pay now
+        </button>
+      </Link>
+      </div>
+}
+
 
         <div className="px-5 space-y-1 border-t pt-3">
           <div className="flex items-center justify-start w-8/12">
             <TiTick className="text-xl mr-2" />
-            <p class="text-lg">SKU: {sku}</p>
+            <p class="text-lg uppercase">SKU: {sku}</p>
           </div>
           <div className="flex items-center justify-start w-8/12">
             <TiTick className="text-xl mr-2" />
-            <p class="text-lg">Category: {category}</p>
+            <p class="text-lg capitalize">Category: {category}</p>
           </div>
           <div className="flex items-center justify-start w-8/12">
             <TiTick className="text-xl mr-2" />

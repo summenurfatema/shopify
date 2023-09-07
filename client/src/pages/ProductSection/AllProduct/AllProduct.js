@@ -40,7 +40,7 @@ const AllProduct = () => {
               <AiFillStar className="text-2xl text-gray-300" />
             </div>
             <h1 class="text-2xl text-gray-500 font-medium">
-              ${product.data.productPrice}{" "}
+            ₹ {product.data.productPrice}{" "}
             
             </h1>
           </div>

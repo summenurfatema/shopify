@@ -11,6 +11,7 @@ const UserContext = ({ children }) => {
     const [loading, setLoading] = useState(true)
     const [userRole, setUserRole] = useState(null);
 
+
     // sign up
     const createUser = (email, password) => {
         setLoading(true)
@@ -54,16 +55,15 @@ const UserContext = ({ children }) => {
         }
     }, [])
 
-//
-useEffect(() => {
+// checking user role
+   useEffect(() => {
     if (user && user.email) {
-      // Check if user is authenticated and has a UID
-      console.log("Fetching user role for user ID:", user.uid);
       fetch(`http://localhost:5000/get-user/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
           setUserRole(data.role || "Buyer");
+          
         })
         .catch((error) => {
           console.error("Error fetching user role:", error);

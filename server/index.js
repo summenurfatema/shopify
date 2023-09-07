@@ -68,14 +68,7 @@ async function run() {
       );
       res.send(result);
     })
-    //
-    app.get('/get-user/:email',async(req,res)=>{
-      const email = req.params.email
-      const query ={email:email}
-      const result = await userCollection.findOne(query)
-      res.send(result)
-
-    })
+   
     //
     app.post('/post-users', async (req, res) => {
       try {
@@ -137,15 +130,7 @@ async function run() {
     //   res.send(result);
     // });
   //
-  app.get('')
-   // 
-  //  app.get('/get-my-order/:client',async(req,res)=>{
-  //   const client = req.params.email
-
-  //   const query ={"orders.client":client}
-  //   const result = await orderCollection.find(query).toArray()
-  //   res.send(result)
-  //  })
+ 
     
   app.get('/get-my-order/:email', async (req, res) => {
     try {
@@ -257,7 +242,34 @@ app.delete("/delete-cart-item/:id", async (req, res) => {
   const query = { _id: new ObjectId(id) };
   const result = await cartCollection.deleteOne(query);
   res.send(result);
+   //
+   app.get('/get-user/:status/:email',async(req,res)=>{
+    const email = req.params.email
+    const status = req.params.status
+    const query ={email:email,status:status}
+    const result = await userCollection.findOne(query)
+    res.send(result)
+
+  })
 });
+
+ // with status
+ app.get('/get-user-by/:status/:email',async(req,res)=>{
+  const email = req.params.email
+  const status = req.params.status
+  const query ={email:email,status:status}
+  const result = await userCollection.findOne(query)
+  res.send(result)
+
+})
+ // without status
+ app.get('/get-user/:email',async(req,res)=>{
+  const email = req.params.email
+  const query ={email:email}
+  const result = await userCollection.findOne(query)
+  res.send(result)
+
+})
     }
     finally {
        

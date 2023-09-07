@@ -5,7 +5,7 @@ import { NavBar } from '../pages/NavBar/NavBar';
 
 const SellerLayout = () => {
     return (
-        <div>
+        <div className='bg-white'>
 
             <NavBar/>
             <div className='flex justify-center items-start  px-0 md:px-10 2xl:px-14 3xl:px-20 mt-10'>
