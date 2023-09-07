@@ -148,7 +148,7 @@ export const NavBar = () => {
                     { user&&
                         <li>
               <img className="h-12 w-12 rounded-full" src='https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg?size=626&ext=jpg&ga=GA1.2.1540219272.1675657721&semt=ais' alt={user?.displayName}/>
-              <span className="pt-2 font-medium text-sm tracking-wide text-gray-800">Welcome {user?.displayName}</span>
+              <p className="pt-2 font-medium text-sm tracking-wide text-gray-800">Welcome {user?.displayName}</p>
 
                
                 </li>

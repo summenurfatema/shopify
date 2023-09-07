@@ -8,27 +8,28 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const HeroSlider = () => {
     const services = [
+      {
+        title: "Clothing Emporium",
+        description:
+          "Discover a World of Fashion at Our Exclusive Clothing Emporium",
+        image:
+          "https://img.freepik.com/free-photo/beautiful-smiling-young-blonde-woman-pointing-sunglasses-holding-shopping-bags-credit-card-pink-wall_496169-1506.jpg?size=626&ext=jpg&ga=GA1.2.1540219272.1675657721&semt=sph",
+      },
         {
           title: "Customized Travel Packages",
           description:
-            "Tailored travel experiences that match your preferences and interests.",
+            "Your Ultimate Destination for Premium Clothing and Exquisite Bags",
           image:
             "https://images.pexels.com/photos/1058959/pexels-photo-1058959.jpeg?auto=compress&cs=tinysrgb&w=1600",
         },
         {
-          title: "Expert Guides",
+          title: "Clothing Emporium",
           description:
-            "Professional and knowledgeable guides to make your journey educational and enjoyable.",
+            "Discover a World of Fashion at Our Exclusive Clothing Emporium",
           image:
             "https://img.freepik.com/free-photo/closeup-shot-cool-looking-afro-american-girl-posing-with-some-shopping-bags_181624-45777.jpg?w=740&t=st=1693751021~exp=1693751621~hmac=8e15168e0c019a059e411746030a76394cc9118e41c82260c00d6b076824272a",
         },
-        {
-          title: "Luxurious Accommodations",
-          description:
-            "Handpicked accommodations that provide comfort and relaxation during your stay.",
-          image:
-            "https://img.freepik.com/free-photo/beautiful-smiling-young-blonde-woman-pointing-sunglasses-holding-shopping-bags-credit-card-pink-wall_496169-1506.jpg?size=626&ext=jpg&ga=GA1.2.1540219272.1675657721&semt=sph",
-        }]
+        ]
   return (
     <Swiper
       spaceBetween={30}
