@@ -111,12 +111,7 @@ const SignUp = () => {
                                 value={formData.name}
                                 onChange={handleChange}
                             />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input
+
                                 required
                                 type="text"
                                 name="email"
