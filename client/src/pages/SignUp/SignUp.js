@@ -113,14 +113,7 @@ const SignUp = () => {
 
                         </div>
                         <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Set your role</span>
-                            </label>
-                            <select
-                                name="role"
-                                className="select select-bordered select-md w-full max-w-xs"
-                                value={formData.role}
-                                onChange={handleChange}
+
                             >
                                 <option value="Buyer">Buyer</option>
                                 <option value="Seller">Seller</option>
