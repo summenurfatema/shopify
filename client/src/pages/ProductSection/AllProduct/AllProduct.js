@@ -14,7 +14,7 @@ const AllProduct = () => {
 ;
   console.log(products);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 px-0 md:px-10 2xl:px-14 3xl:px-20 py-10 gap-5 lg:gap-6 font-sans">
+    <div className="bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 px-0 md:px-10 2xl:px-14 3xl:px-20 py-10 gap-5 lg:gap-6 font-sans">
       {products.map((product) => (
         <Link
           to={`/data/${product._id}`}
