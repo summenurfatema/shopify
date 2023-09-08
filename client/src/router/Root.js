@@ -5,7 +5,6 @@ import UpdateProduct from "../Seller/UpdateProduct/UpdateProduct";
 import UploadProduct from "../Seller/UploadProduct/UploadProduct";
 import Main from "../layout/Main";
 import SellerLayout from "../layout/SellerLayout";
-import Cart from "../pages/Cart/Cart";
 import Login from "../pages/Login/Login";
 import MyCart from "../pages/MyCart.js/MyCart";
 import MyOrder from "../pages/MyOrder/MyOrder";

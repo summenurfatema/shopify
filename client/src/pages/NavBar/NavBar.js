@@ -177,23 +177,7 @@ export const NavBar = () => {
                               My Cart
                             </a>
                           </li>
-                          <li className="w-32 md:w-64 lg:w-full">
-                            {user ? (
-                              <button
-                                onClick={handleLogOut}
-                                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-600 focus:shadow-outline focus:outline-none"
-                              >
-                                Logout
-                              </button>
-                            ) : (
-                              <a
-                                href="/signin"
-                                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-600 focus:shadow-outline focus:outline-none"
-                              >
-                                Sign in
-                              </a>
-                            )}
-                          </li>
+                          
                         </>
                       ) : (
                         <>
@@ -225,6 +209,23 @@ export const NavBar = () => {
                           </li>
                         </>
                       )}
+                      <li className="w-32 md:w-64 lg:w-full">
+                            {user ? (
+                              <button
+                                onClick={handleLogOut}
+                                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-600 focus:shadow-outline focus:outline-none"
+                              >
+                                Logout
+                              </button>
+                            ) : (
+                              <a
+                                href="/signin"
+                                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-600 focus:shadow-outline focus:outline-none"
+                              >
+                                Sign in
+                              </a>
+                            )}
+                          </li>
                     </ul>
                   </nav>
                 </div>
