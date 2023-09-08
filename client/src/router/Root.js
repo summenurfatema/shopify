@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/data/:id",
+        path: "/product-details/:id",
         element: <ProductCard />,
         loader: ({ params }) =>
           fetch(

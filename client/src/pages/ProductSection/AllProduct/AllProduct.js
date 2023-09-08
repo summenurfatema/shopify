@@ -21,7 +21,7 @@ const AllProduct = () => {
     <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
       {products.map((product) => (
         <Link
-          to={`/data/${product._id}`}
+          to={`/product-details/${product._id}`}
           class="relative block rounded-lg p-4 shadow-sm shadow-indigo-100"
         >
           <img

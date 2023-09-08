@@ -4,10 +4,12 @@ import { toast } from "react-hot-toast";
 
 
 const Cart = () => {
+  //user from user context
   const { user } = useContext(AuthContext);
 
   //cart state
   const [carts, setCarts] = useState([]);
+
   // quantity state
   const [quantities, setQuantities] = useState([]);
 
@@ -61,7 +63,6 @@ const Cart = () => {
   };
 
   // delivery charge options
-
   const shippingOptions = [
     { id: "flat", label: "Flat rate", price: 20 },
     { id: "local", label: "Local pick up", price: 25 },
@@ -69,7 +70,6 @@ const Cart = () => {
   ];
 
   // all items price
-
   const newCartItemPrices = carts.map(
     (cart, index) => cart.price * quantities[index]
   );
@@ -83,7 +83,6 @@ const Cart = () => {
   )?.price;
 
   //calculate total price with devivery charge
-
   const total = subtotal + selectedShippingPrice;
 
  //razorpay button 
@@ -112,7 +111,7 @@ const Cart = () => {
   };
 }, []);
 
-  //order's collection
+  //product information for order's collection
   const handleOrders = async () => {
  
     try {
@@ -136,7 +135,6 @@ const Cart = () => {
       };
 
       // post order to mongodb
-
       const response = await fetch("https://shopify-snqy.onrender.com/api/v1/post-product-as-order", {
         method: "POST",
         headers: {
@@ -149,7 +147,6 @@ const Cart = () => {
         toast.success("WoW, our order is confirmed !!!");
 
         // Removing product after taken the order
-
         await fetch("https://shopify-snqy.onrender.com/api/v1/remove-items-from-cart", {
           method: "POST",
           headers: {
@@ -168,7 +165,7 @@ const Cart = () => {
     }
   };
 
-  // Clear the cart or update it as needed
+  // deleteting  product from cart
   const handleProductDelete = (cart) => {
     const agree = window.confirm("Are you ready to delete this product?");
     if (agree) {
