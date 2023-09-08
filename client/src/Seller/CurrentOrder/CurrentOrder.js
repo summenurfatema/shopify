@@ -91,9 +91,9 @@ const handleDeliveredConfirmed = async (_id) => {
   };
 
   return (
-    <div className="bg-white font-sans w-full">
+    <div className="bg-white font-sans w-full min-h-screen">
       
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center ">
       {orders.length === 0 ? (
         <div className="h-screen">
           <p className="text-sm md:text-lg 2xl:text-2xl text-gray-800 font-medium text-center py-14">
