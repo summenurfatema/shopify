@@ -100,7 +100,6 @@ const MyCart = () => {
       rzpPaymentForm.appendChild(script);
 
     }
-
   });
   //product information for order's collection
   const handleOrders = async () => {
