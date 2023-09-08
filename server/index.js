@@ -28,9 +28,17 @@ async function run() {
         const cartCollection = client.db('shopify').collection('cartCollection')
         const orderCollection = client.db('shopify').collection('orderCollection')
 
-        app.get('/get-data', async(req,res)=>{
+
+ //Get product from product collection 
+  app.get('/api/v1/get-all-product', async(req,res)=>{
             let query ={}
-            const result = await productCollection.find(query).toArray()
+            const result = await productCollection.find(query).sort({_id:-1}).toArray()
+            res.send(result)
+        })
+ //Get product from product collection (limit 8)
+  app.get('/api/v1/get-product', async(req,res)=>{
+            let query ={}
+            const result = await productCollection.find(query).sort({_id:-1}).limit(8).toArray()
             res.send(result)
         })
         
@@ -137,7 +145,7 @@ async function run() {
       const email = req.params.email;
   
       const query = { email: email };
-      const result = await orderCollection.find(query).toArray();
+      const result = await orderCollection.find(query).sort({_id:-1}).toArray();
   
       if (result) {
         res.status(200).json(result);
@@ -149,13 +157,30 @@ async function run() {
       res.status(500).json({ message: 'Internal server error' });
     }
   });
+  app.get('/api/v1/get-all-order', async (req, res) => {
+    try {
+
+  
+      const query = { };
+      const result = await orderCollection.find(query).sort({_id:-1}).toArray();
+  
+      if (result) {
+        res.status(200).json(result);
+      } else {
+        res.status(404).json({ message: 'No orders found' });
+      }
+    } catch (error) {
+      console.error('Error fetching order:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
   
     
     
     
     
-  //
-  app.get('/get-cart-item/:email',async(req,res)=>{
+  // get cart item filtering by email
+  app.get('/api/v1/get-cart-item/:email',async(req,res)=>{
     const email = req.params.email
     const query ={email:email}
     const result = await cartCollection.find(query).toArray()
@@ -163,7 +188,7 @@ async function run() {
 
   })
   // Create a POST route for adding items to an order with a unique order ID
-app.post('/add-items', async (req, res) => {
+app.post('/api/v1/add-product-as-order', async (req, res) => {
   const orderData = req.body;
 
   try {
@@ -222,7 +247,7 @@ app.post('/add-items', async (req, res) => {
   }
 });
  //
- app.post('/remove-items', async (req, res) => {
+ app.post('/api/v1/remove-items-from-cart', async (req, res) => {
   const { email } = req.body;
 
   try {
@@ -237,7 +262,7 @@ app.post('/add-items', async (req, res) => {
 });
 //
 // delete omnilife course
-app.delete("/delete-cart-item/:id", async (req, res) => {
+app.delete("/api/v1/delete-cart-item/:id", async (req, res) => {
   const id = req.params.id;
   const query = { _id: new ObjectId(id) };
   const result = await cartCollection.deleteOne(query);
@@ -270,6 +295,30 @@ app.delete("/delete-cart-item/:id", async (req, res) => {
   res.send(result)
 
 })
+//pack
+
+ app.put("/api/v1/make-status-packed/:id", async (req, res) => {
+  const id = req.params.id;
+  const updatedStatus = req.body.updatedStatus;
+  const filter = { _id: new ObjectId(id) };
+  const updateDoc = {
+    $set: { status: updatedStatus },
+  };
+  const result = await orderCollection.findOneAndUpdate(filter, updateDoc);
+  res.send(result);
+});
+//pack
+
+ app.put("/api/v1/make-status-delivered/:id", async (req, res) => {
+  const id = req.params.id;
+  const updatedStatus = req.body.updatedStatus;
+  const filter = { _id: new ObjectId(id) };
+  const updateDoc = {
+    $set: { status: updatedStatus },
+  };
+  const result = await orderCollection.findOneAndUpdate(filter, updateDoc);
+  res.send(result);
+});
     }
     finally {
        

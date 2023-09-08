@@ -1,4 +1,5 @@
 import HomePage from "../HomePage/HomePage";
+import CurrentOrder from "../Seller/CurrentOrder/CurrentOrder";
 import SellerProduct from "../Seller/SellerProduct/SellerProduct";
 import UpdateProduct from "../Seller/UpdateProduct/UpdateProduct";
 import UploadProduct from "../Seller/UploadProduct/UploadProduct";
@@ -50,7 +51,7 @@ export const router = createBrowserRouter([
 ]},
  
 {
-  path:'/login',
+  path:'/signin',
   element:<Login/>
 },
 {
@@ -70,6 +71,11 @@ export const router = createBrowserRouter([
       
         path:'/seller/upload-product',
         element:<PrivateRoute><UploadProduct/></PrivateRoute>
+      
+    },
+    {
+      path:'/seller/current-order',
+      element:<CurrentOrder/>,
       
     },
     {

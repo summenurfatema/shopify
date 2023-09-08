@@ -5,7 +5,7 @@ import { AiFillStar } from "react-icons/ai";
 const AllProduct = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/get-data")
+    fetch("http://localhost:5000/api/v1/get-product")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -14,7 +14,11 @@ const AllProduct = () => {
 ;
   console.log(products);
   return (
-    <div className="bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 px-0 md:px-10 2xl:px-14 3xl:px-20 py-10 gap-5 lg:gap-6 font-sans">
+    <div className="bg-white px-0 md:px-10 2xl:px-14 3xl:px-20 py-10 lg:gap-6 font-sans">
+   <h1 className="text-2xl xl:text-4xl text-center lg:text-start text-gray-800 font-semibold py-10">
+        Our best collection
+      </h1>
+    <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
       {products.map((product) => (
         <Link
           to={`/data/${product._id}`}
@@ -49,6 +53,7 @@ const AllProduct = () => {
           </button>
         </Link>
       ))}
+    </div>
     </div>
   );
 };

@@ -10,7 +10,7 @@ const SellerSidebar = () => {
     const navigate = useNavigate()
     const handleLogOut = () => {
         logOut().then(() => {
-          navigate("/login");
+          navigate("/signin");
         });
       };
     return (
@@ -33,6 +33,12 @@ const SellerSidebar = () => {
                     <a rel="noopener noreferrer" href="/seller/upload-product" className="flex items-center p-2 space-x-3 rounded-md">
                     <ImUpload className='text-xl' />
                         <span className='font-semibold text-lg'>Upload a product</span>
+                    </a>
+                </li>
+                <li className='bg-white text-gray-800 hover:bg-indigo-600 hover:text-white rounded-md'>
+                    <a rel="noopener noreferrer" href={`/seller/current-order/${user?.email}`} className="flex items-center p-2 space-x-3 rounded-md">
+                    <ImUpload className='text-xl' />
+                        <span className='font-semibold text-lg'>Current orders</span>
                     </a>
                 </li>
                 

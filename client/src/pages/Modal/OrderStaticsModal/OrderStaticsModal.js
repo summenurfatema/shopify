@@ -28,13 +28,13 @@ const OrderStaticsModal = ({order}) => {
           }}
         >
           <div className="modal-box w-11/12 max-w-3xl bg-white">
-            <IoIosCloseCircle
+            {/* <IoIosCloseCircle
               className="text-2xl text-gray-800 float-right cursor-pointer"
               onClick={() => handleCloseStatusModal(order)}
-            />
+            /> */}
            
             <div className="flex flex-col md:flex-row justify-around items-center m-5 3xl:m-14">
-              <div className="flex flex-col items-center justify-center bg-indigo-100 p-10 rounded-full">
+              <div className="flex flex-col items-center justify-center bg-indigo-200 p-10 rounded-full">
                 <GiNotebook className="text-4xl" />
                 <p className="font-bold text-center">
                   Order is taken
@@ -44,13 +44,13 @@ const OrderStaticsModal = ({order}) => {
               <AiOutlineDash className="text-4xl hidden md:block" />
               <RxDoubleArrowDown className="text-3xl my-2 md:hidden" />
               <div
-                className={`flex flex-col items-center justify-center p-10 rounded-full ${
-                  order.status === "pending" ? "bg-indigo-200" : "" // Add a default value if needed
+                className={`flex flex-col items-center justify-center p-10  rounded-full ${
+                  order.status === "packed" || order.status === "delivered"  ? "bg-indigo-300" : "bg-gray-100" // Add a default value if needed
                 }`}
               >
                 <FaBoxOpen className="text-4xl" />
                 <p className="font-bold text-center">
-                  Packing complete
+                  Packing completed
                 </p>
               </div>
               <AiOutlineDash className="text-4xl hidden md:block" />
@@ -58,12 +58,12 @@ const OrderStaticsModal = ({order}) => {
               <RxDoubleArrowDown className="text-3xl my-2 md:hidden" />
               <div
                 className={`flex flex-col items-center justify-center p-10 rounded-full ${
-                  order.status === "pending" ? "bg-indigo-300" : "" // Add a default value if needed
+                  order.status === "delivered" ? "bg-indigo-400" : "bg-gray-100" // Add a default value if needed
                 }`}
               >
                 <TbTruckDelivery className="text-4xl" />
                 <p className="font-bold text-center">
-                  Ready to parcel
+                  Parcel is on the way
                 </p>
               </div>
             </div>

@@ -30,7 +30,7 @@ const Cart = () => {
 
   // get cart items
   useEffect(() => {
-    fetch(`http://localhost:5000/get-cart-item/${user?.email}`)
+    fetch(`http://localhost:5000/api/v1/get-cart-item/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setCarts(data);
@@ -137,7 +137,7 @@ const Cart = () => {
 
       // post order to mongodb
 
-      const response = await fetch("http://localhost:5000/add-items", {
+      const response = await fetch("http://localhost:5000/api/v1/add-product-as-order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -150,7 +150,7 @@ const Cart = () => {
 
         // Removing product after taken the order
 
-        await fetch("http://localhost:5000/remove-items", {
+        await fetch("http://localhost:5000/api/v1/remove-items-from-cart", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -172,7 +172,7 @@ const Cart = () => {
   const handleProductDelete = (cart) => {
     const agree = window.confirm("Are you ready to delete this product?");
     if (agree) {
-      fetch(`http://localhost:5000/delete-cart-item/${cart._id}`, {
+      fetch(`http://localhost:5000/api/v1/delete-cart-item/${cart._id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -303,7 +303,7 @@ const Cart = () => {
       </div>
             </div>
             {/*Amoun calculation */}
-            <div className="space-y-1 border w-full lg:w-5/12  3xl:w-5/12 p-4 text-right rounded-md">
+            <div className="space-y-1 border w-full lg:w-5/12  3xl:w-5/12 p-4 text-right rounded-mdb shadow-lg">
               <p>
                 Subtotal:
                 <span className="font-semibold pl-2 pb-2">

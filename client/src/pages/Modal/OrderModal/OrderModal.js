@@ -23,7 +23,7 @@ const OrderModal = ({order}) => {
             onClick={() => handleCloseModal(order)}
           />
           <div className="grid grid-cols-1  md:grid-cols-2 gap-5 py-2">
-            {order.products.items.map((item, itemIndex) => (
+            {order?.products?.items?.map((item, itemIndex) => (
               <div class="flex items-center gap-4 border rounded-md p-2 border-gray-300 shadow-lg">
               <img
                 alt="Developer"

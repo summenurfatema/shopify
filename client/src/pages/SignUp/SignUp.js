@@ -7,6 +7,17 @@ import { FcGoogle } from "react-icons/fc";
 
 const SignUp = () => {
   const { createUser, updateUser, google } = useContext(AuthContext);
+     
+    const [passwordType, setPasswordType] = useState("password");
+
+    const togglePassword =()=>{
+        if(passwordType==="password")
+        {
+         setPasswordType("text")
+         return;
+        }
+        setPasswordType("password")
+      }
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -33,7 +44,7 @@ const SignUp = () => {
         };
         updateUser(userInfo)
           .then(() => {
-            navigate("/login");
+            navigate("/signin");
           })
           .catch((error) => console.error(error));
         toast.success("Account created successfully !!");
@@ -94,15 +105,15 @@ const SignUp = () => {
   };
   return (
     <>
-      <div className="flex justify-center items-center font-sans pt-10  bg-gray-200 h-screen">
+      <div className="flex justify-center items-center font-sans py-10  bg-gray-200">
         <div className="w-full max-w-md p-4 border rounded-md shadow-md sm:p-8 bg-white text-gray-800">
           <h2 className="mb-3 text-3xl font-semibold text-center">
             Login to your account
           </h2>
           <p className="text-lg text-center text-gray-800">
-            Don't have an account?{" "}
-            <Link className="hover:text-blue-500 cursor-pointer" to="/signup">
-              Sign up here
+           Already have an account?{" "}
+            <Link className="hover:text-blue-500 cursor-pointer" to="/signin">
+              Sign in here
             </Link>
           </p>
           <div className="my-6 space-y-4">
@@ -169,7 +180,7 @@ const SignUp = () => {
             </div>
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Set your role</span>
+                <span className="label-text text-gray-800">Set your role</span>
               </label>
               <select
                 name="role"
@@ -190,7 +201,7 @@ const SignUp = () => {
           </form>
         </div>
       </div>
-      );
+      
     </>
   );
 };

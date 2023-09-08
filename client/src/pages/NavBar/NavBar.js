@@ -11,7 +11,7 @@ export const NavBar = () => {
 
   const handleLogOut = () => {
     logOut().then(() => {
-      navigate("/login");
+      navigate("/signin");
     });
   };
 
@@ -60,7 +60,7 @@ export const NavBar = () => {
                     </button>
                   ) : (
                     <a
-                      href="/login"
+                      href="/signin"
                       class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-600 focus:shadow-outline focus:outline-none"
                     >
                       Sign in
@@ -184,7 +184,7 @@ export const NavBar = () => {
                     </button>
                   ) : (
                     <a
-                      href="/login"
+                      href="/signin"
                       class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-600 focus:shadow-outline focus:outline-none"
                     >
                       Sign in

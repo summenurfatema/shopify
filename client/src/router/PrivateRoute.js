@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/UserContext/UserContext';
+import Loading from '../pages/Loading/Loading';
 
 const PrivateRoute = ({ children }) => {
     const { loading, user } = useContext(AuthContext)
@@ -8,12 +9,12 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation()
 
     if (loading) {
-        return (<h1>Loding</h1>)
+        return (<Loading/>)
     }
     if (user) {
         return children;
     }
-    return <Navigate to='/login' state={{ from: location }} replace></Navigate>
+    return <Navigate to='/signin' state={{ from: location }} replace></Navigate>
 
 
 };

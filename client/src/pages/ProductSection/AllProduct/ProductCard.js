@@ -220,12 +220,12 @@ const handleMyOrder = () => {
       </div>
       :
       <div className="flex items-center">
-      <Link to='/login'>
+      <Link to='/signin'>
         <button  className="w-40 rounded-md mt-2 text-xl text-white py-2 bg-indigo-700 hover:bg-indigo-500">
           Add to cart
         </button>
       </Link>
-      <Link to='/login'>
+      <Link to='/signin'>
       <button  className="ml-3 w-40 rounded-md mt-2 text-xl text-white py-2 bg-indigo-700 hover:bg-indigo-500">
           Pay now
         </button>

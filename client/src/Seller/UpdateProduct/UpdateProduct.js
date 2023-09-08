@@ -35,8 +35,8 @@ const UpdateProduct = () => {
   };
   return (
     <div>
-      <section className="p-6 bg-white border rounded-md text-gray-800 font-sans">
-      <div className="flex justify-center border-b pb-2 mx-10">
+      <section className="p-1 md:p-6 bg-white border rounded-md text-gray-800 font-sans">
+      <div className="flex justify-center border-b pb-2 mx-1 md:mx-10">
         <MdMovieEdit className='text-xl' />
      <h1 className="text-xl text-gray-800 font-bold pl-3">Update {initialData.data.productTitle}</h1>
      </div>
@@ -46,8 +46,8 @@ const UpdateProduct = () => {
           className="container flex flex-col mx-auto space-y-12  "
           onSubmit={handleSubmit(onSubmit)}
         >
-          <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm w-full">
-            <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-4 mx-5 p-8 border bg-white rounded-md">
+          <fieldset className="grid grid-cols-4 gap-6 p-1 md:p-6 rounded-md shadow-sm w-full">
+            <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-4 mx-0 lg:mx-5 p-2 md:p-8 border bg-white rounded-md">
               {/* product title */}
               <div className="col-span-full">
                 <label htmlFor="productTitle" className="text-lg font-medium pb-2">
@@ -126,7 +126,7 @@ const UpdateProduct = () => {
               </div>
               {/* color */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="color">Color</label>
+                <label htmlFor="color" className="text-lg font-medium">Color</label>
                 <Controller
                   name="color"
                   control={control}
@@ -149,7 +149,7 @@ const UpdateProduct = () => {
               </div>
               {/* size */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="size">Size</label>
+                <label htmlFor="size" className="text-lg font-medium">Size</label>
                 <Controller
                   name="size"
                   control={control}
@@ -170,7 +170,7 @@ const UpdateProduct = () => {
               </div>
               {/* Category */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="category">Category</label>
+                <label htmlFor="category" className="text-lg font-medium">Category</label>
                 <Controller
                   name="category"
                   control={control}
@@ -190,7 +190,7 @@ const UpdateProduct = () => {
               </div>
               {/* Subcategory */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="subCategory">Subcategory</label>
+                <label htmlFor="subCategory" className="text-lg font-medium">Subcategory</label>
                 <Controller
                   name="subCategory"
                   control={control}
@@ -212,7 +212,7 @@ const UpdateProduct = () => {
               </div>
               {/* Availability */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="available">Available</label>
+                <label htmlFor="available" className="text-lg font-medium">Available</label>
                 <Controller
                   name="available"
                   control={control}
@@ -328,7 +328,7 @@ const UpdateProduct = () => {
                   )}
                 />
               </div>
-              <button type="submit"  class="inline-flex items-center justify-center h-12 px-6 font-medium text-lg tracking-wide text-white  rounded shadow-md bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none">
+              <button type="submit"  class="w-36 lg:w-60 h-12 px-6 font-medium text-lg tracking-wide text-white  rounded shadow-md bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none">
             Update
           </button>
             </div>
