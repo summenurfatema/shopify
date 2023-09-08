@@ -267,6 +267,14 @@ app.delete("/api/v1/delete-cart-item/:id", async (req, res) => {
   const query = { _id: new ObjectId(id) };
   const result = await cartCollection.deleteOne(query);
   res.send(result);
+});
+// delete omnilife course
+app.delete("/api/v1/delete-product/:id", async (req, res) => {
+  const id = req.params.id;
+  const query = { _id: new ObjectId(id) };
+  const result = await productCollection.deleteOne(query);
+  res.send(result);
+});
    //
    app.get('/get-user/:status/:email',async(req,res)=>{
     const email = req.params.email
@@ -276,7 +284,7 @@ app.delete("/api/v1/delete-cart-item/:id", async (req, res) => {
     res.send(result)
 
   })
-});
+
 
  // with status
  app.get('/get-user-by/:status/:email',async(req,res)=>{

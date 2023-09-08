@@ -8,7 +8,7 @@ const UploadProduct = () => {
   const onSubmit = async (data) => {
     try {
       console.log(data);
-      // 'data' contains all the form values as an object
+
       const response = await fetch(
         `http://localhost:5000/upload-product`,
         {
@@ -27,10 +27,11 @@ const UploadProduct = () => {
       }
     } catch (error) {
       console.error("Error:", error);
-    }
+     }
   };
 
-  
+  //
+
   return (
     <div>
       <section className="p-1 md:p-6 border rounded-md text-gray-800">
@@ -53,6 +54,7 @@ const UploadProduct = () => {
                   Product Title
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="productTitle"
                   control={control}
                   defaultValue=""
@@ -72,6 +74,7 @@ const UploadProduct = () => {
                   Product Description
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="productDescription"
                   control={control}
                   defaultValue=""
@@ -91,6 +94,7 @@ const UploadProduct = () => {
                   Image Link
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="imageLink"
                   control={control}
                   defaultValue=""
@@ -110,6 +114,7 @@ const UploadProduct = () => {
                   Seller SKU
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="sku"
                   control={control}
                   defaultValue=""
@@ -127,6 +132,7 @@ const UploadProduct = () => {
               <div className="col-span-full sm:col-span-2">
                 <label htmlFor="color" className="text-lg font-medium">Color</label>
                 <Controller
+                rules={{ required: true }}
                   name="color"
                   control={control}
                   defaultValue=""
@@ -150,6 +156,7 @@ const UploadProduct = () => {
               <div className="col-span-full sm:col-span-2">
                 <label htmlFor="size" className="text-lg font-medium">Size</label>
                 <Controller
+                rules={{ required: true }}
                   name="size"
                   control={control}
                   defaultValue=""
@@ -167,54 +174,57 @@ const UploadProduct = () => {
                   )}
                 />
               </div>
-              {/* Category */}
-              <div className="col-span-full sm:col-span-2">
-                <label htmlFor="category" className="text-lg font-medium">Category</label>
-                <Controller
-                  name="category"
-                  control={control}
-                  defaultValue="men"// Set default value here if needed
-                 
-                  render={({ field }) => (
-                    <select
-                      {...field}
-                      id="category"
-                      className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
-                    >
-                      <option value="men">Men</option>
-                      <option value="women">Women</option>
-                      <option value="kids">Kids</option>
-                    </select>
-                  )}
-                />
-              </div>
-              {/* Subcategory */}
-              <div className="col-span-full sm:col-span-2">
-                <label htmlFor="subCategory" className="text-lg font-medium">Subcategory</label>
-                <Controller
-                  name="subCategory"
-                  control={control}
-                  defaultValue="cloth"
-                  render={({ field }) => (
-                    <select
-                      {...field}
-                      id="subCategory"
-                      className="w-full rounded-md capitalize border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
-                    >
-                       <option value="cloth">Cloth</option>
-                      <option value="shoe">Shoe</option>
-                      <option value="ornaments">Ornaments</option>
-                      <option value="bag">Bag</option>
-                      <option value="watch">Watch</option>
-                      
-                    </select>
-                  )}
-                />
-              </div>
+{/* Category */}
+<div className="col-span-full sm:col-span-2">
+<label htmlFor="category" className="text-lg font-medium">Category</label>
+<Controller
+rules={{ required: true }}
+ name="category"
+ control={control}
+ defaultValue="men"// Set default value here if needed
+
+ render={({ field }) => (
+   <select
+     {...field}
+     id="category"
+     className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
+   >
+     <option value="men">Men</option>
+     <option value="women">Women</option>
+     <option value="kids">Kids</option>
+   </select>
+ )}
+/>
+</div>
+{/* Subcategory */}
+<div className="col-span-full sm:col-span-2">
+<label htmlFor="subCategory" className="text-lg font-medium">Subcategory</label>
+<Controller
+rules={{ required: true }}
+ name="subCategory"
+ control={control}
+ defaultValue="cloth"
+ render={({ field }) => (
+   <select
+     {...field}
+     id="subCategory"
+     className="w-full rounded-md capitalize border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
+   >
+      <option value="cloth">Cloth</option>
+     <option value="shoe">Shoe</option>
+     <option value="ornaments">Ornaments</option>
+     <option value="bag">Bag</option>
+     <option value="watch">Watch</option>
+     
+   </select>
+ )}
+/>
+</div>
               {/* Availability */}
               <div className="col-span-full sm:col-span-2">
                 <label htmlFor="available" className="text-lg font-medium">Available</label>
                 <Controller
+                rules={{ required: true }}
                   name="available"
                   control={control}
                   defaultValue="true"
@@ -236,6 +246,7 @@ const UploadProduct = () => {
                   Price
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="productPrice"
                   control={control}
                   defaultValue=""
@@ -256,6 +267,7 @@ const UploadProduct = () => {
                   Quantity
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="quantity"
                   control={control}
                   defaultValue=""
@@ -274,6 +286,7 @@ const UploadProduct = () => {
               <div className="col-span-full sm:col-span-2">
                 <label htmlFor="isStock">Stock Status</label>
                 <Controller
+                rules={{ required: true }}
                   name="isStock"
                   control={control}
                   defaultValue="true"
@@ -295,6 +308,7 @@ const UploadProduct = () => {
                   Package Weight
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="packageWeight"
                   control={control}
                   defaultValue=""
@@ -315,6 +329,7 @@ const UploadProduct = () => {
                   Dimension
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="dimension"
                   control={control}
                   defaultValue=""
@@ -377,3 +392,48 @@ export default UploadProduct;
 //               <div className="col-span-full sm:col-span-2">
 //                 <label for="cars">Size</label>
 
+// {/* Category */}
+// <div className="col-span-full sm:col-span-2">
+// <label htmlFor="category" className="text-lg font-medium">Category</label>
+// <Controller
+//rules={{ required: true }}
+//  name="category"
+//  control={control}
+//  defaultValue="men"// Set default value here if needed
+
+//  render={({ field }) => (
+//    <select
+//      {...field}
+//      id="category"
+//      className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
+//    >
+//      <option value="men">Men</option>
+//      <option value="women">Women</option>
+//      <option value="kids">Kids</option>
+//    </select>
+//  )}
+// />
+// </div>
+// {/* Subcategory */}
+// <div className="col-span-full sm:col-span-2">
+// <label htmlFor="subCategory" className="text-lg font-medium">Subcategory</label>
+// <Controller
+//  name="subCategory"
+//  control={control}
+//  defaultValue="cloth"
+//  render={({ field }) => (
+//    <select
+//      {...field}
+//      id="subCategory"
+//      className="w-full rounded-md capitalize border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
+//    >
+//       <option value="cloth">Cloth</option>
+//      <option value="shoe">Shoe</option>
+//      <option value="ornaments">Ornaments</option>
+//      <option value="bag">Bag</option>
+//      <option value="watch">Watch</option>
+     
+//    </select>
+//  )}
+// />
+// </div>

@@ -26,6 +26,22 @@ const SellerProduct = () => {
     setCurrentPage(pageNumber);
   };
 
+ // Delete product
+ const handleProductDelete = (cart) => {
+  const agree = window.confirm("Are you ready to delete this product?");
+  if (agree) {
+    fetch(`http://localhost:5000/api/v1/delete-product/${cart._id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          alert(" This product has been deleted successfully !");
+          window.location.reload();
+        }
+      });
+  }
+};
   return (
     <div className=''>
     <div className="overflow-x-auto font-sans h-screen">
@@ -59,7 +75,7 @@ const SellerProduct = () => {
                   <h1 class="text-lg text-gray-800 font-normal text-center capitalize">{cart.data.category}</h1>
                 </td>
                 <td className="w-1/4 md:w-1/6">
-                  <h1 class="text-lg text-gray-800 font-normal text-center">${cart.data.productPrice}</h1>
+                  <h1 class="text-lg text-gray-800 font-normal text-center">₹ {cart.data.productPrice}</h1>
                 </td>
                 <td className="w-1/4 md:w-1/6">
                   <h1 class="text-lg text-gray-800 font-normal text-center">{cart.data.isStock==="true"?"In":"Out"}</h1>
@@ -70,7 +86,7 @@ const SellerProduct = () => {
                   </Link>
                 </td>
                 <td className='pl-8'>
-                  <div  className="flex justify-center items-center h-12 w-12 rounded-full duration-200 hover:bg-red-500">
+                  <div onClick={()=>handleProductDelete(cart)}  className="flex justify-center items-center h-12 w-12 rounded-full duration-200 hover:bg-red-500">
                     <TbTrashOff className="text-3xl text-center text-gray-800 hover:text-white " />
                   </div>
                 </td>

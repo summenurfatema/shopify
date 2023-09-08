@@ -3,6 +3,7 @@ import { AuthContext } from '../../context/UserContext/UserContext';
 import {ImUpload} from 'react-icons/im'
 import {MdProductionQuantityLimits} from 'react-icons/md'
 import {RiDoorOpenFill} from 'react-icons/ri'
+import {FaBox} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
 
 const SellerSidebar = () => {
@@ -16,7 +17,7 @@ const SellerSidebar = () => {
     return (
         <div className="h-full p-3 space-y-2 w-96 bg-white text-gray-800 font-sans border rounded-md">
         <div className="flex items-center p-2 space-x-4">
-            <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-full dark:bg-gray-500" />
+            <img src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg?size=626&ext=jpg&ga=GA1.2.1540219272.1675657721&semt=ais" alt="" className="w-12 h-12 rounded-full dark:bg-gray-500" />
             <div>
                 <h2 className="text-xl font-bold capitalize">Welcome {user?.displayName} !!!</h2>
             </div>
@@ -36,8 +37,8 @@ const SellerSidebar = () => {
                     </a>
                 </li>
                 <li className='bg-white text-gray-800 hover:bg-indigo-600 hover:text-white rounded-md'>
-                    <a rel="noopener noreferrer" href={`/seller/current-order/${user?.email}`} className="flex items-center p-2 space-x-3 rounded-md">
-                    <ImUpload className='text-xl' />
+                    <a rel="noopener noreferrer" href='/seller/current-order' className="flex items-center p-2 space-x-3 rounded-md">
+                    <FaBox className='text-xl' />
                         <span className='font-semibold text-lg'>Current orders</span>
                     </a>
                 </li>

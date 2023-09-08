@@ -18,7 +18,7 @@ export const NavBar = () => {
 
   return (
     <div class="bg-white font-sans z-50">
-      <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+      <div class="px-4 py-5  md:px-12 2xl:px-16 4xl:px-20">
         <div class="relative flex items-center justify-between">
           <div class="flex items-center">
             <a
@@ -210,6 +210,15 @@ export const NavBar = () => {
                     class="font-medium text-lg tracking-wide text-gray-800"
                   >
                    Upload a product
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="/seller/current-order"
+                    class="font-medium text-lg tracking-wide text-gray-800"
+                  >
+                   Current order
                   </a>
                 </li>
                         </>

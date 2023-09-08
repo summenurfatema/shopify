@@ -28,10 +28,10 @@ const OrderStaticsModal = ({order}) => {
           }}
         >
           <div className="modal-box w-11/12 max-w-3xl bg-white">
-            {/* <IoIosCloseCircle
+            <IoIosCloseCircle
               className="text-2xl text-gray-800 float-right cursor-pointer"
               onClick={() => handleCloseStatusModal(order)}
-            /> */}
+            />
            
             <div className="flex flex-col md:flex-row justify-around items-center m-5 3xl:m-14">
               <div className="flex flex-col items-center justify-center bg-indigo-200 p-10 rounded-full">

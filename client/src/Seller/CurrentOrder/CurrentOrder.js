@@ -88,10 +88,10 @@ const handleDeliveredConfirmed = async (_id) => {
     }
   };
   return (
-    <div className="bg-white font-sans">
+    <div className="bg-white font-sans w-full">
       
-      <div className="flex justify-center items-center">
-        <div className="flex flex-col mx-3 p-2 space-y-4 sm:p-10 bg-white text-gray-800 border rounded-md">
+      <div className="flex justify-between items-center">
+        <div className="flex flex-col w-full p-2 space-y-4 sm:p-10 bg-white text-gray-800 border rounded-md">
         <h1 className="text-2xl xl:text-4xl text-center lg:text-start text-black font-semibold">
         Current orders
       </h1>

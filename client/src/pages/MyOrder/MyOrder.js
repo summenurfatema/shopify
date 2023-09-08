@@ -16,6 +16,24 @@ const MyOrder = () => {
       </h1>
       <div className="flex justify-center items-center">
         <div className="flex flex-col mx-3 p-6 space-y-4 sm:p-10 bg-white text-gray-800 border rounded-md">
+          {
+            orders.length === 0?
+            <>
+          <p className="text-sm md:text-lg 2xl:text-2xl text-gray-800 font-medium text-center py-14">
+            You didn't make any order yet. Do some{" "}
+            <span>
+              <a
+                href="/"
+                className="text-blue-600 cursor-pointer hover:underline"
+              >
+                Shopping
+              </a>
+            </span>{" "}
+            !!!
+          </p>
+        </>
+        :
+         
           <ul className="flex flex-col divide-y divide-gray-700 w-full md:w-[500px] lg:w-[700px] xl:w-[800px] 3xl:w-[1200px]">
             {orders.map((order) => (
               <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
@@ -68,6 +86,7 @@ const MyOrder = () => {
               </li>
             ))}
           </ul>
+}
         </div>
       </div>
     </div>

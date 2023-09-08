@@ -54,6 +54,7 @@ const UpdateProduct = () => {
                   Product Title
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="productTitle"
                   control={control}
                   defaultValue={initialData.data.productTitle} // Set initial value from useLoaderData
@@ -73,6 +74,7 @@ const UpdateProduct = () => {
                   Product Description
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="productDescription"
                   control={control}
                   defaultValue={initialData.data.productDescription} 
@@ -92,6 +94,7 @@ const UpdateProduct = () => {
                   Image Link
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="imageLink"
                   control={control}
                   defaultValue={initialData.data.imageLink} 
@@ -111,6 +114,7 @@ const UpdateProduct = () => {
                   Seller SKU
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="sku"
                   control={control}
                    defaultValue={initialData.data.sku} 
@@ -128,6 +132,7 @@ const UpdateProduct = () => {
               <div className="col-span-full sm:col-span-2">
                 <label htmlFor="color" className="text-lg font-medium">Color</label>
                 <Controller
+                  rules={{ required: true }}
                   name="color"
                   control={control}
                    defaultValue={initialData.data.color} 
@@ -151,10 +156,11 @@ const UpdateProduct = () => {
               <div className="col-span-full sm:col-span-2">
                 <label htmlFor="size" className="text-lg font-medium">Size</label>
                 <Controller
-                  name="size"
-                  control={control}
+                   rules={{ required: true }}
+                   name="size"
+                   control={control}
                    defaultValue={initialData.data.size} 
-                  render={({ field }) => (
+                   render={({ field }) => (
                     <select
                       {...field}
                       id="size"
@@ -172,9 +178,10 @@ const UpdateProduct = () => {
               <div className="col-span-full sm:col-span-2">
                 <label htmlFor="category" className="text-lg font-medium">Category</label>
                 <Controller
+                rules={{ required: true }}
                   name="category"
                   control={control}
-                  defaultValue={initialData.data.category} // Set default value here if needed
+                  defaultValue={initialData.data.category} 
                   render={({ field }) => (
                     <select
                       {...field}
@@ -190,8 +197,9 @@ const UpdateProduct = () => {
               </div>
               {/* Subcategory */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="subCategory" className="text-lg font-medium">Subcategory</label>
+                <label htmlFor="subCategory" className="text-lg font-medium">Sub Category</label>
                 <Controller
+                rules={{ required: true }}
                   name="subCategory"
                   control={control}
                   defaultValue={initialData.data.subCategory} 
@@ -199,13 +207,14 @@ const UpdateProduct = () => {
                     <select
                       {...field}
                       id="subCategory"
-                      className="w-full rounded-md capitalize border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
+                      className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
                     >
                       <option value="cloth">Cloth</option>
                       <option value="shoe">Shoe</option>
-                      <option value="ornaments">Ornaments</option>
                       <option value="bag">Bag</option>
+                      <option value="ornament">Ornament</option>
                       <option value="watch">Watch</option>
+                     
                     </select>
                   )}
                 />
@@ -214,6 +223,7 @@ const UpdateProduct = () => {
               <div className="col-span-full sm:col-span-2">
                 <label htmlFor="available" className="text-lg font-medium">Available</label>
                 <Controller
+                rules={{ required: true }}
                   name="available"
                   control={control}
                   defaultValue={initialData.data.available} 
@@ -235,6 +245,7 @@ const UpdateProduct = () => {
                   Price
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="productPrice"
                   control={control}
                    defaultValue={initialData.data.productPrice} 
@@ -255,6 +266,7 @@ const UpdateProduct = () => {
                   Quantity
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="quantity"
                   control={control}
                    defaultValue={initialData.data.quantity} 
@@ -273,6 +285,7 @@ const UpdateProduct = () => {
               <div className="col-span-full sm:col-span-2">
                 <label htmlFor="isStock">Stock Status</label>
                 <Controller
+                rules={{ required: true }}
                   name="isStock"
                   control={control}
                   defaultValue={initialData.data.isStock} 
@@ -294,6 +307,7 @@ const UpdateProduct = () => {
                   Package Weight
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="packageWeight"
                   control={control}
                    defaultValue={initialData.data.packageWeight} 
@@ -314,6 +328,7 @@ const UpdateProduct = () => {
                   Dimension
                 </label>
                 <Controller
+                rules={{ required: true }}
                   name="dimension"
                   control={control}
                    defaultValue={initialData.data.dimension} 

@@ -86,31 +86,31 @@ const Cart = () => {
 
   const total = subtotal + selectedShippingPrice;
 
-  // razorpay button
+ //razorpay button 
+ useEffect(() => {
+  const loadPaymentButtonScript = () => {
+    const form = document.getElementById("payment");
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+    script.async = true;
+    script.dataset.payment_button_id = "pl_MZpXibRMYJij0x";
 
-  useEffect(() => {
-    const loadPaymentButtonScript = () => {
-      const form = document.getElementById("payment");
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-      script.async = true;
-      script.dataset.payment_button_id = "pl_MXRJDPUPoDIfxQ";
+    if (form) {
+      form.appendChild(script);
+    }
+    
+  };
+  loadPaymentButtonScript();
 
-      if (form) {
-        form.appendChild(script);
-      }
-    };
-    loadPaymentButtonScript();
-
-    return () => {
-      const script = document.querySelector(
-        'script[src="https://checkout.razorpay.com/v1/payment-button.js"]'
-      );
-      if (script && script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    };
-  }, []);
+  return () => {
+    const script = document.querySelector(
+      'script[src="https://checkout.razorpay.com/v1/payment-button.js"]'
+    );
+    if (script && script.parentNode) {
+      script.parentNode.removeChild(script);
+    }
+  };
+}, []);
 
   //order's collection
   const handleOrders = async () => {
@@ -192,7 +192,7 @@ const Cart = () => {
       </h1>
       {carts.length === 0 ? (
         <>
-          <p className="text-sm md:text-lg 2xl:text-2xl text-gray-800 font-medium text-center">
+          <p className="text-sm md:text-lg 2xl:text-2xl text-gray-800 font-medium text-center py-14">
             Your cart is empty. Do some{" "}
             <span>
               <a
@@ -336,11 +336,7 @@ const Cart = () => {
                 </span>
               </p>
 
-              <form
-                className="w-full"
-                id="payment"
-                onClick={handleOrders}
-              ></form>
+              <form id="payment" onClick={handleOrders}></form>
             </div>
           </div>
         </div>
