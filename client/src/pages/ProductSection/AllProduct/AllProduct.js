@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 
 const AllProduct = () => {
+  
+  //state for storing all products
   const [products, setProducts] = useState([]);
   useEffect(() => {
     fetch("https://shopify-snqy.onrender.com/api/v1/get-product")
@@ -12,7 +14,7 @@ const AllProduct = () => {
       });
   }, []);
 ;
-  console.log(products);
+
   return (
     <div className="bg-white px-0 md:px-10 2xl:px-14 3xl:px-20 py-10 lg:gap-6 font-sans">
    <h1 className="text-2xl xl:text-4xl text-center lg:text-start text-gray-800 font-semibold py-10">
