@@ -7,13 +7,20 @@ import {FaBox} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
 
 const SellerSidebar = () => {
+
+    //getting props from user context
     const {user,logOut} = useContext(AuthContext)
+
+    //navigate/route
     const navigate = useNavigate()
+
+    // function for log out
     const handleLogOut = () => {
         logOut().then(() => {
           navigate("/signin");
         });
       };
+      
     return (
         <div className="h-full p-3 space-y-2 w-96 bg-white text-gray-800 font-sans border rounded-md">
         <div className="flex items-center p-2 space-x-4">

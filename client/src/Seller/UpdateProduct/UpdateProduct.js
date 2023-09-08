@@ -5,14 +5,13 @@ import {MdMovieEdit} from 'react-icons/md'
 
 const UpdateProduct = () => {
   const { handleSubmit, control } = useForm();
+
+  //getting data drom loader
   const initialData = useLoaderData()
 
-  // Function to handle form submission
+  // Function for updating poduct information
   const onSubmit = async (data) => {
-    console.log(data);
     try {
-        console.log(data);
-        // 'data' contains all the form values as an object
         const response = await fetch(
           `https://shopify-snqy.onrender.com/api/v1/update-product-information/${initialData._id}`,
           {
