@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
 import { IoIosStats } from "react-icons/io";
 import { AiOutlineFundView } from "react-icons/ai";
 import { FaBoxOpen } from 'react-icons/fa';
@@ -10,8 +9,10 @@ import { toast } from "react-hot-toast";
 
 
 const CurrentOrder = () => {
+  //state of orders
     const [orders,setOrders] =useState([])
 
+    //getting all orders from backend
     useEffect(() => {
         fetch(`https://shopify-snqy.onrender.com/api/v1/get-all-order`)
           .then((res) => res.json())
@@ -19,11 +20,11 @@ const CurrentOrder = () => {
             setOrders(data);
           });
       }, []);
-// packing confirmed
 
+
+// make the status packing confirmed
 const handlePackingConfirmed = async (_id) => {
     const updatedStatus = "packed";
-
     const confirmation = window.confirm(
       "All products are packed ?"
     );
@@ -53,11 +54,12 @@ const handlePackingConfirmed = async (_id) => {
       console.error("An error occurred:", error);
     }
   };
-// deliverd confirmed
+
+
+//  make the status deliverd confirmed
 
 const handleDeliveredConfirmed = async (_id) => {
     const updatedStatus = "delivered";
-
     const confirmation = window.confirm(
       "All products are ready to delivered ?"
     );
@@ -87,6 +89,7 @@ const handleDeliveredConfirmed = async (_id) => {
       console.error("An error occurred:", error);
     }
   };
+
   return (
     <div className="bg-white font-sans w-full">
       
@@ -156,11 +159,6 @@ const handleDeliveredConfirmed = async (_id) => {
                         className="flex items-center px-2 py-1 space-x-1"
                       >
                         <TbTruckDelivery className="text-2xl" />
-                        {/* {order?.status=== ''?
-                        <span className="cursor-pointer" onClick={()=>handleDeliveredConfirmed(order._id)}>Ready to delivered</span>
-                        :
-                        <span className="cursor-not-allowed">Not ready to delivered</span>
-                       } */}
                        {order.status === "packed" ? (
                     <span className="cursor-pointer" onClick={() => handleDeliveredConfirmed(order._id)}>
                       Ready to deliver
