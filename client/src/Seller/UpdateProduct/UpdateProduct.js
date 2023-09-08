@@ -2,6 +2,7 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import {MdMovieEdit} from 'react-icons/md'
+import toast from "react-hot-toast";
 
 const UpdateProduct = () => {
   const { handleSubmit, control } = useForm();
@@ -24,7 +25,7 @@ const UpdateProduct = () => {
         );
   
         if (response.ok) {
-          alert("A product updated successfully");
+          toast.success("A product updated successfully");
         } else {
           console.error("Error:", response.statusText);
         }

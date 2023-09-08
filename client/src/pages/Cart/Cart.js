@@ -175,7 +175,7 @@ const Cart = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {
-            alert(" This product has been deleted successfully !");
+            toast.success(" This product has been deleted successfully !");
             window.location.reload();
           }
         });

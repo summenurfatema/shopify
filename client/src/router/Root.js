@@ -7,6 +7,7 @@ import Main from "../layout/Main";
 import SellerLayout from "../layout/SellerLayout";
 import Cart from "../pages/Cart/Cart";
 import Login from "../pages/Login/Login";
+import MyCart from "../pages/MyCart.js/MyCart";
 import MyOrder from "../pages/MyOrder/MyOrder";
 import ProductCard from "../pages/ProductSection/AllProduct/ProductCard";
 import SignUp from "../pages/SignUp/SignUp";
@@ -34,14 +35,14 @@ export const router = createBrowserRouter([
         path: "/my-cart",
         element: (
           <PrivateRoute>
-            <Cart />
+            <MyCart />
           </PrivateRoute>
         ),
       },
 
       {
         path: "/my-order/:email",
-        element: <MyOrder />,
+        element:    <PrivateRoute><MyOrder /></PrivateRoute> ,
         loader: ({ params }) =>
           fetch(
             `https://shopify-snqy.onrender.com/api/v1/get-my-order/${params.email}`

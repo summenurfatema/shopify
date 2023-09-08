@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TbTrashOff } from 'react-icons/tb';
+import toast from 'react-hot-toast';
 
 const SellerProduct = () => {
 
@@ -40,7 +41,7 @@ const SellerProduct = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
-          alert(" This product has been deleted successfully !");
+          toast.success(" This product has been deleted successfully !");
           window.location.reload();
         }
       });

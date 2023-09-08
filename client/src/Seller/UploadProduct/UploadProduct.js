@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
+import toast from "react-hot-toast";
 import { ImUpload } from "react-icons/im";
 
 
@@ -22,7 +23,7 @@ const UploadProduct = () => {
       );
 
       if (response.ok) {
-        alert("A product added successfully");
+        toast.success("A product added successfully");
       } else {
         console.error("Error:", response.statusText);
       }

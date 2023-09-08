@@ -49,30 +49,22 @@ const ProductCard = () => {
   const newPrice = (product.data.productPrice * quantity).toFixed(2);
   
 
-   //razorpay button 
+   //razorpay button "pl_MXRJDPUPoDIfxQ"
+   const buttonId = "pl_MXRJDPUPoDIfxQ"
    useEffect(() => {
-    const loadPaymentButtonScript = () => {
-      const form = document.getElementById("form");
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-      script.async = true;
-      script.dataset.payment_button_id = "pl_MXRJDPUPoDIfxQ";
-
-      if (form) {
-        form.appendChild(script);
-      }
-    };
-    loadPaymentButtonScript();
-
-    return () => {
-      const script = document.querySelector(
-        'script[src="https://checkout.razorpay.com/v1/payment-button.js"]'
-      );
-      if (script && script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    };
-  }, []);
+     const rzpPaymentForm = document.getElementById("form");
+     
+     if (rzpPaymentForm) {
+ 
+       const script = document.createElement("script");
+       script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+       script.async = true;
+       script.dataset.payment_button_id = buttonId;
+       rzpPaymentForm.appendChild(script);
+ 
+     }
+ 
+   });
 
 
 // Add product to my order
@@ -147,21 +139,21 @@ const handleMyOrder = () => {
 
 
   return (
-    <div className="bg-white text-gray-800 font-sans flex justify-between items-start px-0 md:px-10 2xl:px-14 3xl:px-20 py-10">
+    <div className="bg-white text-gray-800 font-sans flex flex-col lg:flex-row justify-between items-start px-4 md:px-10 2xl:px-14 3xl:px-20 py-10">
       {/* left */}
-      <div className="w-1/2 ">
+      <div className="w-full lg:w-1/2 ">
         <img
           alt="Home"
           src={imageLink}
-          class=" w-11/12 rounded-md object-cover"
+          class="w-full lg:w-11/12 rounded-md object-cover"
         />
       </div>
       {/* right */}
-      <div class=" space-y-5 w-1/2 ">
+      <div class=" space-y-5 flex flex-col justify-center items-center lg:items-start lg:justify-start w-full lg:w-1/2 ">
         <div class="space-y-2">
-          <p class="text-xl capitalize">For {category}</p>
+          <p class="text-xl capitalize pt-2 lg:pt-0 text-center lg:text-start">For {category}</p>
 
-          <h1 class="text-3xl text-gray-800 font-semibold">{productTitle}</h1>
+          <h1 class="text-3xl text-gray-800 font-semibold text-center lg:text-start">{productTitle}</h1>
 
           <div className="flex space-x-3 items-center">
             <>
@@ -183,7 +175,7 @@ const handleMyOrder = () => {
               <AiFillStar className="text-2xl text-gray-300" />
             </div>
           </div>
-          <p className="text-xl pt-1">{productDescription}</p>
+          <p className="text-xl pt-1 text-center lg:text-start">{productDescription}</p>
          
         </div>
         <p className="text-xl pt-1">₹{newPrice}</p>
@@ -210,12 +202,12 @@ const handleMyOrder = () => {
        
           
         {user?
-         <div className="flex items-start">
+         <div className="flex flex-col lg:flex-row items-start space-y-3 lg:space-y-0">
         <button onClick={handleAddToCart} className="mr-3 w-40 rounded-md  text-xl text-white py-2 bg-indigo-700 hover:bg-indigo-500">
         Add to cart
       </button>
 
-      <form onClick={handleMyOrder} id='form'></form>
+      <form onClick={handleMyOrder} id="form"></form>
 
       </div>
       :
