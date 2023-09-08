@@ -32,10 +32,10 @@ const SellerProduct = () => {
   };
 
  // Delete product
- const handleProductDelete = (cart) => {
+ const handleProductDelete = (product) => {
   const agree = window.confirm("Are you ready to delete this product?");
   if (agree) {
-    fetch(`https://shopify-snqy.onrender.com/api/v1/delete-product/${cart._id}`, {
+    fetch(`https://shopify-snqy.onrender.com/api/v1/delete-product/${product._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -63,35 +63,35 @@ const SellerProduct = () => {
           </tr>
         </thead>
         <tbody className="border-b">
-          {currentProducts.map((cart, index) => {
+          {currentProducts.map((product, index) => {
             return (
-              <tr key={cart.productId} className="">
+              <tr key={product.productId} className="">
                 <td className='flex justify-center items-center'>
                   <img
-                    src={cart.data.imageLink}
+                    src={product.data.imageLink}
                     className="h-14 w-12 lg:h-24 lg:w-24 object-cover rounded-lg p-2"
-                    alt="CartItem"
+                    alt="productItem"
                   />
                 </td>
                 <td className="w-1/4 md:w-1/6">
-                  <h1 class="text-lg text-gray-800 font-normal text-center">{cart.data.productTitle}</h1>
+                  <h1 class="text-lg text-gray-800 font-normal text-center">{product.data.productTitle}</h1>
                 </td>
                 <td className="w-1/4 md:w-1/6">
-                  <h1 class="text-lg text-gray-800 font-normal text-center capitalize">{cart.data.category}</h1>
+                  <h1 class="text-lg text-gray-800 font-normal text-center capitalize">{product.data.category}</h1>
                 </td>
                 <td className="w-1/4 md:w-1/6">
-                  <h1 class="text-lg text-gray-800 font-normal text-center">₹ {cart.data.productPrice}</h1>
+                  <h1 class="text-lg text-gray-800 font-normal text-center">₹ {product.data.productPrice}</h1>
                 </td>
                 <td className="w-1/4 md:w-1/6">
-                  <h1 class="text-lg text-gray-800 font-normal text-center">{cart.data.isStock==="true"?"In":"Out"}</h1>
+                  <h1 class="text-lg text-gray-800 font-normal text-center">{product.data.isStock==="true"?"In":"Out"}</h1>
                 </td>
                 <td className="w-1/4 md:w-1/6">
-                  <Link to={`/seller/update-product/${cart._id}`}>
+                  <Link to={`/seller/update-product/${product._id}`}>
                     <h1 class="text-lg text-blue-500 font-normal text-center">Edit</h1>
                   </Link>
                 </td>
                 <td className='pl-8'>
-                  <div onClick={()=>handleProductDelete(cart)}  className="flex justify-center items-center h-12 w-12 rounded-full duration-200 hover:bg-red-500">
+                  <div onClick={()=>handleProductDelete(product)}  className="flex justify-center items-center h-12 w-12 rounded-full duration-200 hover:bg-red-500">
                     <TbTrashOff className="text-3xl text-center text-gray-800 hover:text-white " />
                   </div>
                 </td>
