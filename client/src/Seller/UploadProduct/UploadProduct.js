@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { ImUpload } from "react-icons/im";
+
+
+
+
 const UploadProduct = () => {
+
+
   const { handleSubmit, control } = useForm();
 
-  // Function to handle form submission
+  // Function for storing all onfo from Form and post to backend
   const onSubmit = async (data) => {
     try {
-      console.log(data);
-
       const response = await fetch(
         `https://shopify-snqy.onrender.com/api/v1/upload-new-product`,
         {
@@ -16,7 +20,7 @@ const UploadProduct = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({data}),
+          body: JSON.stringify({ data }),
         }
       );
 
@@ -27,18 +31,19 @@ const UploadProduct = () => {
       }
     } catch (error) {
       console.error("Error:", error);
-     }
+    }
   };
 
-  //
 
   return (
     <div>
       <section className="p-1 md:p-6 border rounded-md text-gray-800">
         <div className="flex justify-center border-b pb-2 mx-1 md:mx-10">
-        <ImUpload className='text-xl' />
-     <h1 className="text-xl text-gray-800 font-semibold pl-3">Upload a product</h1>
-     </div>
+          <ImUpload className="text-xl" />
+          <h1 className="text-xl text-gray-800 font-semibold pl-3">
+            Upload a product
+          </h1>
+        </div>
         <form
           novalidate=""
           action=""
@@ -46,7 +51,6 @@ const UploadProduct = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm w-full">
-         
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-4 mx-0 lg:mx-5 p-2 md:p-8 border bg-white rounded-md">
               {/* product title */}
               <div className="col-span-full">
@@ -54,7 +58,7 @@ const UploadProduct = () => {
                   Product Title
                 </label>
                 <Controller
-                rules={{ required: true }}
+                  rules={{ required: true }}
                   name="productTitle"
                   control={control}
                   defaultValue=""
@@ -70,11 +74,14 @@ const UploadProduct = () => {
               </div>
               {/* Product Description */}
               <div className="col-span-full">
-                <label htmlFor="productDescription" className="text-lg font-medium">
+                <label
+                  htmlFor="productDescription"
+                  className="text-lg font-medium"
+                >
                   Product Description
                 </label>
                 <Controller
-                rules={{ required: true }}
+                  rules={{ required: true }}
                   name="productDescription"
                   control={control}
                   defaultValue=""
@@ -94,7 +101,7 @@ const UploadProduct = () => {
                   Image Link
                 </label>
                 <Controller
-                rules={{ required: true }}
+                  rules={{ required: true }}
                   name="imageLink"
                   control={control}
                   defaultValue=""
@@ -114,7 +121,7 @@ const UploadProduct = () => {
                   Seller SKU
                 </label>
                 <Controller
-                rules={{ required: true }}
+                  rules={{ required: true }}
                   name="sku"
                   control={control}
                   defaultValue=""
@@ -130,9 +137,11 @@ const UploadProduct = () => {
               </div>
               {/* color */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="color" className="text-lg font-medium">Color</label>
+                <label htmlFor="color" className="text-lg font-medium">
+                  Color
+                </label>
                 <Controller
-                rules={{ required: true }}
+                  rules={{ required: true }}
                   name="color"
                   control={control}
                   defaultValue=""
@@ -154,9 +163,11 @@ const UploadProduct = () => {
               </div>
               {/* size */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="size" className="text-lg font-medium">Size</label>
+                <label htmlFor="size" className="text-lg font-medium">
+                  Size
+                </label>
                 <Controller
-                rules={{ required: true }}
+                  rules={{ required: true }}
                   name="size"
                   control={control}
                   defaultValue=""
@@ -174,57 +185,61 @@ const UploadProduct = () => {
                   )}
                 />
               </div>
-{/* Category */}
-<div className="col-span-full sm:col-span-2">
-<label htmlFor="category" className="text-lg font-medium">Category</label>
-<Controller
-rules={{ required: true }}
- name="category"
- control={control}
- defaultValue="men"// Set default value here if needed
-
- render={({ field }) => (
-   <select
-     {...field}
-     id="category"
-     className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
-   >
-     <option value="men">Men</option>
-     <option value="women">Women</option>
-     <option value="kids">Kids</option>
-   </select>
- )}
-/>
-</div>
-{/* Subcategory */}
-<div className="col-span-full sm:col-span-2">
-<label htmlFor="subCategory" className="text-lg font-medium">Subcategory</label>
-<Controller
-rules={{ required: true }}
- name="subCategory"
- control={control}
- defaultValue="cloth"
- render={({ field }) => (
-   <select
-     {...field}
-     id="subCategory"
-     className="w-full rounded-md capitalize border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
-   >
-      <option value="cloth">Cloth</option>
-     <option value="shoe">Shoe</option>
-     <option value="ornaments">Ornaments</option>
-     <option value="bag">Bag</option>
-     <option value="watch">Watch</option>
-     
-   </select>
- )}
-/>
-</div>
+              {/* Category */}
+              <div className="col-span-full sm:col-span-2">
+                <label htmlFor="category" className="text-lg font-medium">
+                  Category
+                </label>
+                <Controller
+                  rules={{ required: true }}
+                  name="category"
+                  control={control}
+                  defaultValue="men" // Set default value here if needed
+                  render={({ field }) => (
+                    <select
+                      {...field}
+                      id="category"
+                      className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
+                    >
+                      <option value="men">Men</option>
+                      <option value="women">Women</option>
+                      <option value="kids">Kids</option>
+                    </select>
+                  )}
+                />
+              </div>
+              {/* Subcategory */}
+              <div className="col-span-full sm:col-span-2">
+                <label htmlFor="subCategory" className="text-lg font-medium">
+                  Subcategory
+                </label>
+                <Controller
+                  rules={{ required: true }}
+                  name="subCategory"
+                  control={control}
+                  defaultValue="cloth"
+                  render={({ field }) => (
+                    <select
+                      {...field}
+                      id="subCategory"
+                      className="w-full rounded-md capitalize border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
+                    >
+                      <option value="cloth">Cloth</option>
+                      <option value="shoe">Shoe</option>
+                      <option value="ornaments">Ornaments</option>
+                      <option value="bag">Bag</option>
+                      <option value="watch">Watch</option>
+                    </select>
+                  )}
+                />
+              </div>
               {/* Availability */}
               <div className="col-span-full sm:col-span-2">
-                <label htmlFor="available" className="text-lg font-medium">Available</label>
+                <label htmlFor="available" className="text-lg font-medium">
+                  Available
+                </label>
                 <Controller
-                rules={{ required: true }}
+                  rules={{ required: true }}
                   name="available"
                   control={control}
                   defaultValue="true"
@@ -246,7 +261,7 @@ rules={{ required: true }}
                   Price
                 </label>
                 <Controller
-                rules={{ required: true }}
+                  rules={{ required: true }}
                   name="productPrice"
                   control={control}
                   defaultValue=""
@@ -267,7 +282,7 @@ rules={{ required: true }}
                   Quantity
                 </label>
                 <Controller
-                rules={{ required: true }}
+                  rules={{ required: true }}
                   name="quantity"
                   control={control}
                   defaultValue=""
@@ -286,7 +301,7 @@ rules={{ required: true }}
               <div className="col-span-full sm:col-span-2">
                 <label htmlFor="isStock">Stock Status</label>
                 <Controller
-                rules={{ required: true }}
+                  rules={{ required: true }}
                   name="isStock"
                   control={control}
                   defaultValue="true"
@@ -308,7 +323,7 @@ rules={{ required: true }}
                   Package Weight
                 </label>
                 <Controller
-                rules={{ required: true }}
+                  rules={{ required: true }}
                   name="packageWeight"
                   control={control}
                   defaultValue=""
@@ -329,7 +344,7 @@ rules={{ required: true }}
                   Dimension
                 </label>
                 <Controller
-                rules={{ required: true }}
+                  rules={{ required: true }}
                   name="dimension"
                   control={control}
                   defaultValue=""
@@ -344,96 +359,18 @@ rules={{ required: true }}
                   )}
                 />
               </div>
-              <button type="submit"  class="w-52 lg:w-60 h-12 px-6 font-medium text-lg tracking-wide text-white  rounded shadow-md bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none">
-            Upload
-          </button>
+              <button
+                type="submit"
+                class="w-52 lg:w-60 h-12 px-6 font-medium text-lg tracking-wide text-white  rounded shadow-md bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none"
+              >
+                Upload
+              </button>
             </div>
-           
           </fieldset>
-   
-        
         </form>
-        
       </section>
     </div>
   );
 };
 
 export default UploadProduct;
-// import React, { useState } from "react";
-
-// const UploadProduct = () => {
-//   const [formData, setFormData] = useState({
-//     productTitle: "",
-//     productDescription: "",
-//     imageLink: "",
-//     sellerSKU: "",
-//     color: "Red",
-//     size: "S",
-//     category: "men",
-//     subcategory: "shirt",
-//     available: "Yes",
-//     price: "",
-//     quantity: "",
-//     stockStatus: "Stock In",
-//     packageWeight: "",
-//     dimension: "",
-//   });
-//   const handleInputChange = (event) => {
-//     const { name, value } = event.target;
-//     setFormData({
-
-
-//                   className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-
-//                 </select>
-//               </div>
-//               {/* size */}
-//               <div className="col-span-full sm:col-span-2">
-//                 <label for="cars">Size</label>
-
-// {/* Category */}
-// <div className="col-span-full sm:col-span-2">
-// <label htmlFor="category" className="text-lg font-medium">Category</label>
-// <Controller
-//rules={{ required: true }}
-//  name="category"
-//  control={control}
-//  defaultValue="men"// Set default value here if needed
-
-//  render={({ field }) => (
-//    <select
-//      {...field}
-//      id="category"
-//      className="w-full rounded-md border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
-//    >
-//      <option value="men">Men</option>
-//      <option value="women">Women</option>
-//      <option value="kids">Kids</option>
-//    </select>
-//  )}
-// />
-// </div>
-// {/* Subcategory */}
-// <div className="col-span-full sm:col-span-2">
-// <label htmlFor="subCategory" className="text-lg font-medium">Subcategory</label>
-// <Controller
-//  name="subCategory"
-//  control={control}
-//  defaultValue="cloth"
-//  render={({ field }) => (
-//    <select
-//      {...field}
-//      id="subCategory"
-//      className="w-full rounded-md capitalize border h-12 focus:ring focus:ri focus:ri outline-none border-gray-500 pl-3 bg-white text-gray-900"
-//    >
-//       <option value="cloth">Cloth</option>
-//      <option value="shoe">Shoe</option>
-//      <option value="ornaments">Ornaments</option>
-//      <option value="bag">Bag</option>
-//      <option value="watch">Watch</option>
-     
-//    </select>
-//  )}
-// />
-// </div>
