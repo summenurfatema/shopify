@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 import { TbTrashOff } from 'react-icons/tb';
 
 const SellerProduct = () => {
+
+  // state of products
   const [products, setProducts] = useState([]);
+
+ //state of current page for pagination
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 5;
 
