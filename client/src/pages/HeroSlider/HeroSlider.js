@@ -57,7 +57,7 @@ const HeroSlider = () => {
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
               <h2 className="text-3xl font-semibold">{slide.title}</h2>
               <p className="text-lg mt-2">{slide.description}</p>
-              <button className="bg-blue-500 text-white py-2 px-4 mt-4 rounded-md hover:bg-blue-600">
+              <button className="bg-indigo-700 text-white py-2 px-4 mt-4 rounded-md hover:bg-indigo-600">
                 SHOP NOW
               </button>
             </div>
