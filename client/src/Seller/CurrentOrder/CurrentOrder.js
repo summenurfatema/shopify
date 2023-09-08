@@ -94,7 +94,14 @@ const handleDeliveredConfirmed = async (_id) => {
     <div className="bg-white font-sans w-full">
       
       <div className="flex justify-between items-center">
-        <div className="flex flex-col w-full p-2 space-y-4 sm:p-10 bg-white text-gray-800 border rounded-md">
+      {orders.length === 0 ? (
+        <>
+          <p className="text-sm md:text-lg 2xl:text-2xl text-gray-800 font-medium text-center py-14">
+            You don't have any order yet !!!
+          </p>
+        </>)
+        :
+        (<div className="flex flex-col w-full p-2 space-y-4 sm:p-10 bg-white text-gray-800 border rounded-md">
         <h1 className="text-2xl xl:text-4xl text-center lg:text-start text-black font-semibold">
         Current orders
       </h1>
@@ -174,7 +181,8 @@ const handleDeliveredConfirmed = async (_id) => {
               </li>
             ))}
           </ul>
-        </div>
+        </div>)
+}
       </div>
     </div>
   );
