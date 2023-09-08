@@ -6,27 +6,30 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 
 const SignUp = () => {
+
+  //getting props from user context
   const { createUserByEmailAndPass, updateUser, signInByGoogle } = useContext(AuthContext);
-    
-
-
+  
+  // navigator/ route
   const navigate = useNavigate();
+
+  //storing form data
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    role: "Buyer", // Set the default role to 'Buyer'
+    role: "Buyer",
   });
 
+  //storing data after change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  //sign up by email and password
   const handleSignupByEmail = (e) => {
     e.preventDefault();
-    // Here, formData contains the object with form data
-    console.log(formData);
     createUserByEmailAndPass(formData.email, formData.password)
       .then((result) => {
         const user = result.user;
@@ -43,6 +46,7 @@ const SignUp = () => {
       })
       .catch((err) => console.error(err));
 
+    //posting user info to backend
     fetch("https://shopify-snqy.onrender.com/api/v1/post-users", {
       method: "POST",
       headers: {
@@ -53,14 +57,15 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
-          // Display the error message in an alert
-          toast.error(data.error);
+         console.log(data.error);
         } else {
           // Handle the success response here if needed
-          alert("User created successfully");
+          toast.success("User created successfully !!!");
         }
       });
   };
+
+  //sign in by google account
   const googleProvider = new GoogleAuthProvider();
 
   const handleGoogleSignIn = () => {
