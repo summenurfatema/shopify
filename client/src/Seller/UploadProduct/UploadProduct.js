@@ -3,10 +3,7 @@ import { useForm, Controller } from "react-hook-form";
 import { ImUpload } from "react-icons/im";
 
 
-
-
 const UploadProduct = () => {
-
 
   const { handleSubmit, control } = useForm();
 
