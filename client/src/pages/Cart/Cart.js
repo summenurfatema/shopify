@@ -30,7 +30,7 @@ const Cart = () => {
 
   // get cart items
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/get-cart-item/${user?.email}`)
+    fetch(`https://shopify-snqy.onrender.com/api/v1/get-cart-item/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setCarts(data);
@@ -137,7 +137,7 @@ const Cart = () => {
 
       // post order to mongodb
 
-      const response = await fetch("http://localhost:5000/api/v1/add-product-as-order", {
+      const response = await fetch("https://shopify-snqy.onrender.com/api/v1/post-product-as-order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -150,7 +150,7 @@ const Cart = () => {
 
         // Removing product after taken the order
 
-        await fetch("http://localhost:5000/api/v1/remove-items-from-cart", {
+        await fetch("https://shopify-snqy.onrender.com/api/v1/remove-items-from-cart", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -172,7 +172,7 @@ const Cart = () => {
   const handleProductDelete = (cart) => {
     const agree = window.confirm("Are you ready to delete this product?");
     if (agree) {
-      fetch(`http://localhost:5000/api/v1/delete-cart-item/${cart._id}`, {
+      fetch(`https://shopify-snqy.onrender.com/api/v1/delete-cart-item/${cart._id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

@@ -9,7 +9,7 @@ const SellerProduct = () => {
   const productsPerPage = 5;
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/get-all-product")
+    fetch("https://shopify-snqy.onrender.com/api/v1/get-all-product")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -30,7 +30,7 @@ const SellerProduct = () => {
  const handleProductDelete = (cart) => {
   const agree = window.confirm("Are you ready to delete this product?");
   if (agree) {
-    fetch(`http://localhost:5000/api/v1/delete-product/${cart._id}`, {
+    fetch(`https://shopify-snqy.onrender.com/api/v1/delete-product/${cart._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

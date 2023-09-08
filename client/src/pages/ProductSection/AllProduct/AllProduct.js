@@ -5,7 +5,7 @@ import { AiFillStar } from "react-icons/ai";
 const AllProduct = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/get-product")
+    fetch("https://shopify-snqy.onrender.com/api/v1/get-product")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

@@ -13,7 +13,7 @@ const CurrentOrder = () => {
     const [orders,setOrders] =useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/v1/get-all-order`)
+        fetch(`https://shopify-snqy.onrender.com/api/v1/get-all-order`)
           .then((res) => res.json())
           .then((data) => {
             setOrders(data);
@@ -34,7 +34,7 @@ const handlePackingConfirmed = async (_id) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/v1/make-status-packed/${_id}`,
+        `https://shopify-snqy.onrender.com/api/v1/make-status-packed/${_id}`,
         {
           method: "PUT",
           headers: {
@@ -68,7 +68,7 @@ const handleDeliveredConfirmed = async (_id) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/v1/make-status-delivered/${_id}`,
+        `https://shopify-snqy.onrender.com/api/v1/make-status-delivered/${_id}`,
         {
           method: "PUT",
           headers: {

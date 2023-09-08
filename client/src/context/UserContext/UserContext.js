@@ -57,7 +57,7 @@ const UserContext = ({ children }) => {
 // checking user role
    useEffect(() => {
     if (user && user.email) {
-      fetch(`http://localhost:5000/get-user/${user.email}`)
+      fetch(`https://shopify-snqy.onrender.com/api/v1/get-user/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data);

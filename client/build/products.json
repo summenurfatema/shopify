@@ -1,0 +1,86 @@
+[
+  {
+    
+    "productName": "Shopping bag",
+    "productDescription": "Something about the product",
+    "productImage": "https://i.ibb.co/Np8G5S9/Flower-01.png",
+    "productColor": "red",
+    "productSize": "XL",
+    "previousPrice": 150,
+    "offerPrice":100,
+    "productQuantity": 20,
+    "isStock": true,
+    "category": "Bag",
+    "sku": "AFDH4628"
+  },
+  {
+    
+    "productName": "Shopping bag",
+    "productDescription": "Something about the product",
+    "productImage": "https://i.ibb.co/Np8G5S9/Flower-01.png",
+    "productColor": "red",
+    "productSize": "XL",
+    "previousPrice": 150,
+    "offerPrice":100,
+    "productQuantity": 20,
+    "isStock": true,
+    "category": "Bag",
+    "sku": "AFDH4628"
+  },
+  {
+    
+    "productName": "Shopping bag",
+    "productDescription": "Something about the product",
+    "productImage": "https://i.ibb.co/Np8G5S9/Flower-01.png",
+    "productColor": "red",
+    "productSize": "XL",
+    "previousPrice": 150,
+    "offerPrice":100,
+    "productQuantity": 20,
+    "isStock": true,
+    "category": "Bag",
+    "sku": "AFDH4628"
+  },
+  {
+    
+    "productName": "Shopping bag",
+    "productDescription": "Something about the product",
+    "productImage": "https://i.ibb.co/Np8G5S9/Flower-01.png",
+    "productColor": "red",
+    "productSize": "XL",
+    "previousPrice": 150,
+    "offerPrice":100,
+    "productQuantity": 20,
+    "isStock": true,
+    "category": "Bag",
+    "sku": "AFDH4628"
+  },
+  {
+    
+    "productName": "Shopping bag",
+    "productDescription": "Something about the product",
+    "productImage": "https://i.ibb.co/Np8G5S9/Flower-01.png",
+    "productColor": "red",
+    "productSize": "XL",
+    "previousPrice": 150,
+    "offerPrice":100,
+    "productQuantity": 20,
+    "isStock": true,
+    "category": "Bag",
+    "sku": "AFDH4628"
+  },
+  {
+    
+    "productName": "Shopping bag",
+    "productDescription": "Something about the product",
+    "productImage": "https://i.ibb.co/Np8G5S9/Flower-01.png",
+    "productColor": "red",
+    "productSize": "XL",
+    "previousPrice": 150,
+    "offerPrice":100,
+    "productQuantity": 20,
+    "isStock": true,
+    "category": "Bag",
+    "sku": "AFDH4628"
+  }
+]

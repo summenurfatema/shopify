@@ -13,77 +13,93 @@ import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 const { createBrowserRouter } = require("react-router-dom");
 
-
 export const router = createBrowserRouter([
-    {
-   
-        path: '/',
-        element: <Main></Main>,
-        children: [
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/data/:id",
+        element: <ProductCard />,
+        loader: ({ params }) =>
+          fetch(
+            `https://shopify-snqy.onrender.com/api/v1/get-product-details-by/${params.id}`
+          ).then((res) => res.json()),
+      },
+      {
+        path: "/my-cart",
+        element: (
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        ),
+      },
 
-   {
-    path: '/',
-    element: <HomePage/> 
-   } ,
-   {
-    path: '/data/:id',
-    element: <ProductCard />,
-    loader: ({ params }) => fetch(`http://localhost:5000/get-data-by/${params.id}`).then((res) => res.json())
+      {
+        path: "/my-order/:email",
+        element: <MyOrder />,
+        loader: ({ params }) =>
+          fetch(
+            `https://shopify-snqy.onrender.com/api/v1/get-my-order/${params.email}`
+          ),
+      },
+    ],
+  },
+
+  {
+    path: "/signin",
+    element: <Login />,
   },
   {
-    
-        path: '/my-cart',
-        element: <PrivateRoute>
-          <Cart />
-        </PrivateRoute>
-    
+    path: "/signup",
+    element: <SignUp />,
   },
- 
+
   {
-    path:'/my-order/:email',
-    element:<MyOrder/>,
-    loader:({params})=>fetch(`http://localhost:5000/get-my-order/${params.email}`)
+    path: "/seller",
+    element: <SellerLayout />,
+    children: [
+      {
+        path: "/seller",
+        element: (
+          <PrivateRoute>
+            <SellerProduct />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/seller/upload-product",
+        element: (
+          <PrivateRoute>
+            <UploadProduct />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/seller/current-order",
+        element: (
+          <PrivateRoute>
+            <CurrentOrder />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/seller/update-product/:id",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <UpdateProduct />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://shopify-snqy.onrender.com/api/v1/get-product-details-by/${params.id}`
+          ).then((res) => res.json()),
+      },
+    ],
   },
-
-  
-
-
-]},
- 
-{
-  path:'/signin',
-  element:<Login/>
-},
-{
-  path:'/signup',
-  element:<SignUp/>
-},
-
-{
-  path:"/seller",
-  element:<SellerLayout/>,
-  children:[
-    {
-      path:'/seller',
-      element:<PrivateRoute><SellerProduct/></PrivateRoute>
-    },
-    {
-      
-        path:'/seller/upload-product',
-        element:<PrivateRoute><UploadProduct/></PrivateRoute>
-      
-    },
-    {
-      path:'/seller/current-order',
-      element:<CurrentOrder/>,
-      
-    },
-    {
-      path: '/seller/update-product/:id',
-      element:<PrivateRoute> <UpdateProduct /></PrivateRoute>,
-      loader: ({ params }) => fetch(`http://localhost:5000/get-data-by/${params.id}`).then((res) => res.json())
-    },
-  ]
-}
-
-])
+]);

@@ -85,7 +85,7 @@ const handleMyOrder = () => {
     sellerSku :sku
   };
  
-  const apiUrl = "http://localhost:5000/post-to-my-order";
+  const apiUrl = "https://shopify-snqy.onrender.com/api/v1/post-to-my-order";
 
   // Make a POST request to your backend
   fetch(apiUrl, {
@@ -121,7 +121,7 @@ const handleMyOrder = () => {
     sellerSku :sku
   };
 
-  const apiUrl = "http://localhost:5000/post-to-cart"; 
+  const apiUrl = "https://shopify-snqy.onrender.com/api/v1/post-to-cart"; 
 
   fetch(apiUrl, {
     method: "POST",

@@ -43,7 +43,7 @@ const SignUp = () => {
       })
       .catch((err) => console.error(err));
 
-    fetch("http://localhost:5000/post-users", {
+    fetch("https://shopify-snqy.onrender.com/api/v1/post-users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -74,7 +74,7 @@ const SignUp = () => {
           role: "Buyer",
         };
 
-        fetch("http://localhost:5000/post-users", {
+        fetch("https://shopify-snqy.onrender.com/api/v1/post-users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

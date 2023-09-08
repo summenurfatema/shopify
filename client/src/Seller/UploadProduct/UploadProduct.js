@@ -10,7 +10,7 @@ const UploadProduct = () => {
       console.log(data);
 
       const response = await fetch(
-        `http://localhost:5000/upload-product`,
+        `https://shopify-snqy.onrender.com/api/v1/upload-new-product`,
         {
           method: "POST",
           headers: {

@@ -14,7 +14,7 @@ const UpdateProduct = () => {
         console.log(data);
         // 'data' contains all the form values as an object
         const response = await fetch(
-          `http://localhost:5000/update-product/${initialData._id}`,
+          `https://shopify-snqy.onrender.com/api/v1/update-product-information/${initialData._id}`,
           {
             method: "PUT",
             headers: {
