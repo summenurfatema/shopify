@@ -4,27 +4,28 @@ import { FaUserCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
+  //state for close & opening navbar modal in mobile and tab
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  //geting props from user context
   const { user, logOut, userRole } = useContext(AuthContext);
-  console.log(userRole);
+
+  //navigate/route
   const navigate = useNavigate();
 
+  // function for log out
   const handleLogOut = () => {
     logOut().then(() => {
       navigate("/signin");
     });
   };
 
-
   return (
     <div class="bg-white font-sans z-50">
       <div class="px-4 py-5  md:px-12 2xl:px-16 4xl:px-20">
         <div class="relative flex items-center justify-between">
           <div class="flex items-center">
-            <a
-              href="/"
-              class="inline-flex items-center mr-8"
-            >
+            <a href="/" class="inline-flex items-center mr-8">
               <span class="ml-2 text-3xl font-bold tracking-wide text-gray-800 capitalize">
                 Shopify
               </span>
@@ -69,16 +70,19 @@ export const NavBar = () => {
                 </li>
 
                 <li>
-                  {
-                    user?
-                    <img title={user?.displayName} className="h-12 w-12 rounded-full" src='https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg?size=626&ext=jpg&ga=GA1.2.1540219272.1675657721&semt=ais' alt={user?.displayName}/>
-                    :
+                  {user ? (
+                    <img
+                      title={user?.displayName}
+                      className="h-12 w-12 rounded-full"
+                      src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg?size=626&ext=jpg&ga=GA1.2.1540219272.1675657721&semt=ais"
+                      alt={user?.displayName}
+                    />
+                  ) : (
                     <FaUserCircle
-                    className="text-3xl text-gray-800"
-                    title={user?.displayName}
-                  />
-                  }
-                  
+                      className="text-3xl text-gray-800"
+                      title={user?.displayName}
+                    />
+                  )}
                 </li>
               </>
             ) : (
@@ -118,10 +122,7 @@ export const NavBar = () => {
                 <div class="p-5 bg-white border rounded shadow-sm">
                   <div class="flex items-center justify-between mb-4">
                     <div>
-                      <a
-                        href="/"
-                        class="inline-flex items-center"
-                      >
+                      <a href="/" class="inline-flex items-center">
                         <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                           Shopify
                         </span>
@@ -145,84 +146,85 @@ export const NavBar = () => {
                   </div>
                   <nav>
                     <ul class="space-y-4">
-                    { user&&
+                      {user && (
                         <li>
-              <img className="h-12 w-12 rounded-full" src='https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg?size=626&ext=jpg&ga=GA1.2.1540219272.1675657721&semt=ais' alt={user?.displayName}/>
-              <p className="pt-2 font-medium text-sm tracking-wide text-gray-800">Welcome {user?.displayName}</p>
-
-               
-                </li>
-                 }
-                      {
-                        userRole === "Buyer" ?
+                          <img
+                            className="h-12 w-12 rounded-full"
+                            src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg?size=626&ext=jpg&ga=GA1.2.1540219272.1675657721&semt=ais"
+                            alt={user?.displayName}
+                          />
+                          <p className="pt-2 font-medium text-sm tracking-wide text-gray-800">
+                            Welcome {user?.displayName}
+                          </p>
+                        </li>
+                      )}
+                      {userRole === "Buyer" ? (
                         <>
-                         
-                        <li>
-                  <a
-                    href={`/my-order/${user?.email}`}
-                    class="font-medium text-lg tracking-wide text-gray-800"
-                  >
-                    My order
-                  </a>
-                </li>
+                          <li>
+                            <a
+                              href={`/my-order/${user?.email}`}
+                              class="font-medium text-lg tracking-wide text-gray-800"
+                            >
+                              My order
+                            </a>
+                          </li>
 
-                <li>
-                  <a
-                    href="/my-cart"
-                    class="font-medium text-lg tracking-wide text-gray-800"
-                  >
-                    My Cart
-                  </a>
-                </li>
-                <li className="w-32 md:w-64 lg:w-full">
-                  {user ? (
-                    <button
-                      onClick={handleLogOut}
-                      class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-600 focus:shadow-outline focus:outline-none"
-                    >
-                      Logout
-                    </button>
-                  ) : (
-                    <a
-                      href="/signin"
-                      class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-600 focus:shadow-outline focus:outline-none"
-                    >
-                      Sign in
-                    </a>
-                  )}
-                </li>
+                          <li>
+                            <a
+                              href="/my-cart"
+                              class="font-medium text-lg tracking-wide text-gray-800"
+                            >
+                              My Cart
+                            </a>
+                          </li>
+                          <li className="w-32 md:w-64 lg:w-full">
+                            {user ? (
+                              <button
+                                onClick={handleLogOut}
+                                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-600 focus:shadow-outline focus:outline-none"
+                              >
+                                Logout
+                              </button>
+                            ) : (
+                              <a
+                                href="/signin"
+                                class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-600 focus:shadow-outline focus:outline-none"
+                              >
+                                Sign in
+                              </a>
+                            )}
+                          </li>
                         </>
-
-                        :
+                      ) : (
                         <>
-                        <li>
-                  <a
-                    href='/seller'
-                    class="font-medium text-lg tracking-wide text-gray-800"
-                  >
-                   My Products
-                  </a>
-                </li>
+                          <li>
+                            <a
+                              href="/seller"
+                              class="font-medium text-lg tracking-wide text-gray-800"
+                            >
+                              My Products
+                            </a>
+                          </li>
 
-                <li>
-                  <a
-                    href="/seller/upload-product"
-                    class="font-medium text-lg tracking-wide text-gray-800"
-                  >
-                   Upload a product
-                  </a>
-                </li>
+                          <li>
+                            <a
+                              href="/seller/upload-product"
+                              class="font-medium text-lg tracking-wide text-gray-800"
+                            >
+                              Upload a product
+                            </a>
+                          </li>
 
-                <li>
-                  <a
-                    href="/seller/current-order"
-                    class="font-medium text-lg tracking-wide text-gray-800"
-                  >
-                   Current order
-                  </a>
-                </li>
+                          <li>
+                            <a
+                              href="/seller/current-order"
+                              class="font-medium text-lg tracking-wide text-gray-800"
+                            >
+                              Current order
+                            </a>
+                          </li>
                         </>
-                      }
+                      )}
                     </ul>
                   </nav>
                 </div>
