@@ -6,7 +6,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import {FcGoogle} from 'react-icons/fc'
 
 const Login = () => {
-    const { signIn,google,userRole} = useContext(AuthContext)
+    const { signInByEmailAndPass,signInByGoogle,userRole} = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/';
@@ -27,7 +27,7 @@ const Login = () => {
         e.preventDefault();
       
         console.log(newFormData);
-        signIn(newFormData.email, newFormData.password)
+        signInByEmailAndPass(newFormData.email, newFormData.password)
           .then(result => {
             const user = result.user;
             console.log(user);
@@ -41,7 +41,7 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider()
 
     const handleGoogleSignIn = () => {
-google(googleProvider)
+        signInByGoogle(googleProvider)
     .then((result) => {
       const user = result.user;
       console.log(user.email);

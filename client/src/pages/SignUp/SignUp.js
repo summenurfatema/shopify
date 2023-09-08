@@ -6,18 +6,10 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 
 const SignUp = () => {
-  const { createUser, updateUser, google } = useContext(AuthContext);
-     
-    const [passwordType, setPasswordType] = useState("password");
+  const { createUserByEmailAndPass, updateUser, signInByGoogle } = useContext(AuthContext);
+    
 
-    const togglePassword =()=>{
-        if(passwordType==="password")
-        {
-         setPasswordType("text")
-         return;
-        }
-        setPasswordType("password")
-      }
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -35,7 +27,7 @@ const SignUp = () => {
     e.preventDefault();
     // Here, formData contains the object with form data
     console.log(formData);
-    createUser(formData.email, formData.password)
+    createUserByEmailAndPass(formData.email, formData.password)
       .then((result) => {
         const user = result.user;
         const userInfo = {
@@ -72,7 +64,7 @@ const SignUp = () => {
   const googleProvider = new GoogleAuthProvider();
 
   const handleGoogleSignIn = () => {
-    google(googleProvider)
+    signInByGoogle(googleProvider)
       .then((result) => {
         const user = result.user;
         console.log(user.email);
