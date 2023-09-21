@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-import { allowedOrigins } from "./allowedOrigin";
+import { allowedOrigins } from "./allowedOrigin.js";
 dotenv.config();
 
 const corsOption = {

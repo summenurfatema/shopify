@@ -1,7 +1,9 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { connectDB } from "./configs/connectDB";
+import { logger, EPurpose } from "dev-http-logger";
+import { connectDB } from "./configs/connectDB.js";
+import corsOption from "./configs/corsOptions.js";
 dotenv.config();
 
 /**
@@ -11,6 +13,14 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors(corsOption));
+app.use(
+  logger({
+    origin: true,
+    purpose: EPurpose.DEV,
+    showHeader: true,
+  })
+);
 /**
  * All Routes
  */
