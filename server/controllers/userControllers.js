@@ -1,5 +1,4 @@
-import express from "express";
-import { UserModel } from "../models/index";
+import { UserModel } from "../models/index.js";
 
 class UserController {
   /**

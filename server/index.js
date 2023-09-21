@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { logger, EPurpose } from "dev-http-logger";
 import { connectDB } from "./configs/connectDB.js";
 import corsOption from "./configs/corsOptions.js";
+import { UserRoutes } from "./routes/index.js";
 dotenv.config();
 
 /**
@@ -24,6 +25,9 @@ app.use(
 /**
  * All Routes
  */
+app.use("/api/v1", UserRoutes);
+// TODO
+// for creating product, card, order, etc routes
 
 /**
  * Server listen
