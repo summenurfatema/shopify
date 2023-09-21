@@ -1,7 +1,7 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 
-export const corsOptions = [
+export const allowedOrigins = [
   "http://localhost:5000",
   "http://localhost:4000",
   "localhost:5000",
