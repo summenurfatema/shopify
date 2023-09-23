@@ -1,6 +1,11 @@
 FROM node:slim
-WORKDIR /app
-COPY . /app
+
+WORKDIR /shopify_server
+
+COPY . ./package*.json ./
+
 RUN npm install
+
 EXPOSE 5000
-CMD npm start
+
+CMD ["npm", "run", "dev"]
